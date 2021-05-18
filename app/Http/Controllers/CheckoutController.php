@@ -87,6 +87,13 @@ class CheckoutController extends Controller
        // $ord_d=DB::table('order_detail')->where('order_id',$order->order_id)->first();
         return view('Order_view',['order'=>$order,'thong_tin'=>$thong_tin]);
     }
+    public function Customer(){
+        $customer_id=Session::get('customer_id');
+        $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();
+        
+
+        return view('Customer')->with('thong_tin',$thong_tin);
+    }
     public function Logout_checkout(){
         Session::flush();
         return Redirect('/login-checkout');

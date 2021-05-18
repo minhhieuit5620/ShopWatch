@@ -10,7 +10,20 @@
                 <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                 <a href=""><i class="ti-heart"></i></a>
                 <a  href="/Cart"> <i class="fas fa-cart-plus"></i></a>  
-                <a href="/Order-view"><i class="fas fa-user"></i></a>          
+               
+                <?php
+                 $customer_id=Session::get('customer_id');
+                if($customer_id!=null){
+                      ?>
+                    <a href="/Order-view"><i class="fas fa-user"></i></a>
+                <?php
+                }else{
+                ?>
+                 <a href="{{URL::to('/login-checkout')}}"><i class="fas fa-user"></i></a>
+                <?php
+                }
+                ?>
+                         
                 <div style="margin-left: 15px;">
                 <?php
                         $customer_id=Session::get('customer_id');

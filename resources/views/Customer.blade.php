@@ -88,7 +88,7 @@
                             <div class="widgets_inner">
                                 <ul class="list">
                                     <li>
-                                        <a href="/Customer">Thông tin tài khoản</a>
+                                        <a href="">Thông tin tài khoản</a>
 
                                     </li>
                                 </ul>
@@ -112,41 +112,30 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                   
-                <h3 class="text-center">Đơn hàng của bạn</h3>
-                <br>
-                <div class="table-responsive">                
-                    <table class="table  table-bordered table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Mã đơn hàng</th>                             
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng tiền</th> 
-                                 <th>Trạng thái đơn hàng</th>            
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                    // echo $customer_id;
-                        ?>
-                            @foreach($order as $r)
-                            <tr>
-                                <td> {{$r->order_id}}</td>                                
-                                <td> {{$r->product_name}}</td>                           
-                                <td> {{number_format($r->price,0)}} VNĐ</td>
-                                <td> {{$r->product_quantity}}</td>
-                                <td> {{$r->order_total}} VNĐ</td>
-                                <td>{{$r->order_status}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <a href="/">
-                    <input type="button" class="btn btn-info" value="Quay lại cửa hàng"></a>
-                   
-                </div>
+                    
+                    <h3 class="text-center">Tài khoản của bạn</h3>
+                    <br>
+                    <form action="" method="post">
+                        @foreach($thong_tin as $r)
+                        <div class="form-group">
+                        <label for="">Họ tên</label>
+                        <input type="text" name="txtname" id="" value="{{$r->customer_name}}" class="form-control" placeholder="Nhập họ tên của bạn" aria-describedby="helpId">
+                        
+                        </div>
+                        <div class="form-group">
+                        <label for="">Số điện thoại</label>
+                        <input type="text" name="txtphone" id="" value="{{$r->customer_phone}}" class="form-control" placeholder="Nhập SĐT để trải nghiệm tốt hơn" aria-describedby="helpId">
+                        
+                        </div>
+                        <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" name="txtphone" id="" value="{{$r->customer_email}}" class="form-control" placeholder="Email của bạn" aria-describedby="helpId">
+                        
+                        </div>
+                        <button type="submit" class=" btn btn-danger"> Cập nhật </button>
+                        @endforeach
+                    </form>
+              
                 </div>
             </div>
         </div>
