@@ -8,27 +8,27 @@
     <title>aranoz</title>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/animate.css">
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <!-- nice select CSS -->
-    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="../css/nice-select.css">
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="../css/all.css">
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/themify-icons.css">
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/price_rangs.css">
+    <link rel="stylesheet" href="../css/slick.css">
+    <link rel="stylesheet" href="../css/price_rangs.css">
     <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- jquery plugins here-->
-    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="../js/jquery-1.12.1.min.js"></script>
 </head>
 
 <body>
@@ -80,8 +80,7 @@
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
-                            @foreach($thong_tin as $r)
-                           
+                                @foreach($thong_tin as $r)                           
                                 <h3> <i class="fas fa-user"></i>  {{$r->customer_name}} </h3>
                                 @endforeach
                             </div>
@@ -114,30 +113,45 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    
-                    <h3 class="text-center">Tài khoản của bạn</h3>
-                    <br>
-                    <form action="" method="post">
-                        @foreach($thong_tin as $r)
-                        <div class="form-group">
-                        <label for="">Họ tên</label>
-                        <input type="text" name="txtname" id="" value="{{$r->customer_name}}" class="form-control" placeholder="Nhập họ tên của bạn" aria-describedby="helpId">
-                        
-                        </div>
-                        <div class="form-group">
-                        <label for="">Số điện thoại</label>
-                        <input type="text" name="txtphone" id="" value="{{$r->customer_phone}}" class="form-control" placeholder="Nhập SĐT để trải nghiệm tốt hơn" aria-describedby="helpId">
-                        
-                        </div>
-                        <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="text" name="txtphone" id="" value="{{$r->customer_email}}" class="form-control" placeholder="Email của bạn" aria-describedby="helpId">
-                        
-                        </div>
-                        <button type="submit" class=" btn btn-danger"> Cập nhật </button>
-                        @endforeach
-                    </form>
-              
+                @foreach($order_detail as $r)
+                <h3 class="text-center">Chi tiết đơn hàng {{$r->order_id}} - {{$r->order_status}}</h3>
+                @endforeach
+                <br>
+                <div class="table-responsive">                
+                    <table class="table  table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>                             
+                                <th>Tên sản phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th> 
+                                 
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                    // echo $customer_id;
+                        ?>
+                            @foreach($order_detail as $r)
+                            <tr>
+                                <td> {{$r->order_detail_id}}</a></td> 
+                                <td> {{$r->product_name}}</td>                           
+                                <td><img style="width:50px;" src="/img/dongho/{{$r->image}}" alt=""></td>                               
+                                
+                                <td> {{number_format($r->price,0)}} VNĐ</td>
+                                <td> {{$r->product_quantity}}</td>
+                                <td>{{$r->order_total}} VNĐ</td>
+                                
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <a href="/">
+                    <input type="button" class="btn btn-info" value="Quay lại cửa hàng"></a>
+                   
+                </div>
                 </div>
             </div>
         </div>
@@ -246,31 +260,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
     <!-- popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="../js/popper.min.js"></script>
     <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- easing js -->
-    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="../js/jquery.magnific-popup.js"></script>
     <!-- swiper js -->
-    <script src="js/swiper.min.js"></script>
+    <script src="../js/swiper.min.js"></script>
     <!-- swiper js -->
-    <script src="js/masonry.pkgd.js"></script>
+    <script src="../js/masonry.pkgd.js"></script>
     <!-- particles js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
     <!-- slick js -->
-    <script src="js/slick.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="js/stellar.js"></script>
-    <script src="js/price_rangs.js"></script>
+    <script src="../js/slick.min.js"></script>
+    <script src="../js/jquery.counterup.min.js"></script>
+    <script src="../js/waypoints.min.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/jquery.ajaxchimp.min.js"></script>
+    <script src="../js/jquery.form.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/mail-script.js"></script>
+    <script src="../js/stellar.js"></script>
+    <script src="../js/price_rangs.js"></script>
     <!-- custom js -->
-    <script src="js/custom.js"></script>
+    <script src="../js/custom.js"></script>
 </body>
 
 </html>

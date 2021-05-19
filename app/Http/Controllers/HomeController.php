@@ -18,6 +18,7 @@ class HomeController extends Controller
 
     //
     public function index(){
+       
         $db=ProductModel::take(8)->get();
         $ct=CategoryModel::take(4)->get();
         //footer

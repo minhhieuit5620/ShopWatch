@@ -29,8 +29,12 @@ class CartController extends Controller
     	$data['options']['image'] = $product_info->image;
         $data['tt']=$data['qty']* $product_info->price;
     	Cart::add($data);
-    	return Redirect::to('/Cart');
-    	
+        \Session::flash('toastr',[
+            'type' => 'success',
+            'message' => 'Thêm vào giỏ hàng thành công'
+        ]);
+    	// return Redirect::to('/Cart');
+    	return redirect()->back();
     }
     public function show_cart(){
     	//$show_slide = DB::table('slider')->get();
@@ -41,6 +45,11 @@ class CartController extends Controller
     }
     public function delete_to_cart($rowId){
         Cart::update($rowId,0);
+        //Cart::add($data);
+        \Session::flash('toastr',[
+            'type' => 'success',
+            'message' => 'Xóa sản phẩm khỏi giỏ hàng thành công'
+        ]);
         return Redirect::to('/Cart');
     }
     public function update_cart_qty(Request $request){
@@ -48,6 +57,10 @@ class CartController extends Controller
         $rowId=$request->rowId_cart;
         $qty=$request->cart_quantity;
         Cart::update($rowId,$qty);//chỉ số $a trong  Cart::update($rowId,$a) là chỉ số muốn đưa về
+        \Session::flash('toastr',[
+            'type' => 'success',
+            'message' => 'Cập nhật giỏ hàng thành công'
+        ]);
         return Redirect::to('/Cart');
     }
 }

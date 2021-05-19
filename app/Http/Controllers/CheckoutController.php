@@ -89,10 +89,17 @@ class CheckoutController extends Controller
     }
     public function Customer(){
         $customer_id=Session::get('customer_id');
-        $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();
-        
-
+        $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();        
         return view('Customer')->with('thong_tin',$thong_tin);
+    }
+    public function Order_detail_view($id){
+        $customer_id=Session::get('customer_id');
+        $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();        
+       $order_detail=DB::table('order')
+       ->join('order_detail','order.order_id','=','order_detail.order_id')
+       ->join('product','order_detail.product_id','=','product.id')
+       ->where('order_detail.order_id',$id)->get();
+       return view('/Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
     }
     public function Logout_checkout(){
         Session::flush();

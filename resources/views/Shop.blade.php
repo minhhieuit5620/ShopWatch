@@ -170,7 +170,9 @@
                                         <div class="single_product_text">
                                             <h4>{{$r->nameProduct}}</h4>
                                             <h3>{{number_format($r->price,0)}} VNĐ</h3>
-                                            <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                            <a href="#" class="add_cart">+ add to cart
+                                            <i class="ti-heart" id="{{$r->id}}" onclick="add_wistlist(this.id);"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

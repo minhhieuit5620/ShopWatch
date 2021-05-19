@@ -80,27 +80,28 @@
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
-                            @foreach($thong_tin as $r)
-                           
+                                @foreach($thong_tin as $r)                           
                                 <h3> <i class="fas fa-user"></i>  {{$r->customer_name}} </h3>
                                 @endforeach
                             </div>
-                            <div class="widgets_inner">
+                            <div class="widgets_inner l_w_title">
                                 <ul class="list">
+                                
                                     <li>
-                                        <a href="/Customer">Thông tin tài khoản</a>
+                                        
+                                        <a href="/Customer"><i class="far fa-address-card"></i> Thông tin tài khoản</a>
 
                                     </li>
                                 </ul>
                                 <ul class="list">
                                     <li>
-                                        <a href="">Thông tin tài khoản</a>
+                                        <a href="/Order_view"><i class="far fa-calendar-alt"></i> Đơn hàng của bạn</a>
 
                                     </li>
                                 </ul>
                                 <ul class="list">
                                     <li>
-                                        <a href="">Thông tin tài khoản</a>
+                                        <a href=""><i class="fas fa-heart"></i> Sản phẩm yêu thích</a>
 
                                     </li>
                                 </ul>
@@ -133,7 +134,7 @@
                         ?>
                             @foreach($order as $r)
                             <tr>
-                                <td> {{$r->order_id}}</td>                                
+                                <td> <a href="{{URL::to('/Order_detail/'.$r->order_id)}}">{{$r->order_id}}</a> </td>                                
                                 <td> {{$r->product_name}}</td>                           
                                 <td> {{number_format($r->price,0)}} VNĐ</td>
                                 <td> {{$r->product_quantity}}</td>

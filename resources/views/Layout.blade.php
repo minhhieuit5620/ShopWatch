@@ -26,6 +26,18 @@
     <link rel="stylesheet" href="css/style.css">
      <!-- jquery plugins here-->
      <script src="js/jquery-1.12.1.min.js"></script>
+
+
+     <!--                        thông báo - sử dụng toastr             -->
+     <!-- link css toastr -->
+     <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
+     @if(session('toastr'))
+         <script>
+          var type_message = "{{session('toastr.type')}}";
+          var message= "{{session('toastr.message')}}";
+         </script>     
+     @endif
+    
 </head>
 
 <body>
@@ -253,6 +265,26 @@
     <script src="js/mail-script.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+
+    <!--                         Thông báo               -->
+    <!-- link js toastr -->
+    <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+     <script>
+        if(typeof type_message != "undefined")
+        {
+            switch (type_message){
+                case 'success':
+                 toastr.success(message)
+                 break;
+                 case 'error':
+                 toastr.error(message)
+                 break;
+            }
+
+        }
+    
+     </script>
+     <!--                          end message           -->
 </body>
 
 </html>
