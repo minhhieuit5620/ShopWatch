@@ -29,6 +29,16 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- jquery plugins here-->
     <script src="js/jquery-1.12.1.min.js"></script>
+
+     <!--                        thông báo - sử dụng toastr             -->
+     <!-- link css toastr -->
+     <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
+     @if(session('toastr'))
+         <script>
+          var type_message = "{{session('toastr.type')}}";
+          var message= "{{session('toastr.message')}}";
+         </script>     
+     @endif
 </head>
 
 <body>
@@ -96,7 +106,7 @@
                                 </ul>
                                 <ul class="list">
                                     <li>
-                                        <a href="/Order_view"><i class="far fa-calendar-alt"></i> Đơn hàng của bạn</a>
+                                        <a href="/Order-view"><i class="far fa-calendar-alt"></i> Đơn hàng của bạn</a>
 
                                     </li>
                                 </ul>
@@ -116,9 +126,20 @@
                 <div class="col-lg-9">
                     
                     <h3 class="text-center">Tài khoản của bạn</h3>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <br>
-                    <form action="" method="post">
-                        @foreach($thong_tin as $r)
+                    @foreach($thong_tin as $r)
+                    <form action="{{URL::to('/EditCustomer/'.$r->customer_id)}}" method="post">
+                    {{csrf_field()}}
+                        
                         <div class="form-group">
                         <label for="">Họ tên</label>
                         <input type="text" name="txtname" id="" value="{{$r->customer_name}}" class="form-control" placeholder="Nhập họ tên của bạn" aria-describedby="helpId">
@@ -131,13 +152,22 @@
                         </div>
                         <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" name="txtphone" id="" value="{{$r->customer_email}}" class="form-control" placeholder="Email của bạn" aria-describedby="helpId">
+                        <input type="text" name="txtemail" id="" value="{{$r->customer_email}}" class="form-control" placeholder="Email của bạn" aria-describedby="helpId">
                         
                         </div>
+                        <div class="form-group">
+                          <input type="checkbox" name="checkpassword" id="changePassWord">
+                          <label for="">Đổi mật khẩu</label>
+                          <input type="password" name="password" id="" class="form-control password" placeholder="" aria-describedby="helpId" disabled>                         
+                        </div>
+                        <div class="form-group">
+                          <label for="">Nhập lại mật khẩu</label>
+                          <input type="password" name="passwordAgain" id="" class="form-control password" placeholder="" aria-describedby="helpId" disabled>                        
+                        </div>
                         <button type="submit" class=" btn btn-danger"> Cập nhật </button>
-                        @endforeach
+                      
                     </form>
-              
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -271,6 +301,41 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/price_rangs.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+
+    <!-- Thay đổi mật khẩu -->
+    <script>
+    $(document).ready(function(){
+        $("#changePassWord").change(function(){
+            if($(this).is(":checked")){
+                $(".password").removeAttr('disabled');
+            }
+            else{
+                $(".password").attr('disabled','');
+            }
+        });
+    });
+    
+    </script>
+
+     <!--                         Thông báo               -->
+    <!-- link js toastr -->
+    <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+     <script>
+        if(typeof type_message != "undefined")
+        {
+            switch (type_message){
+                case 'success':
+                 toastr.success(message)
+                 break;
+                 case 'error':
+                 toastr.error(message)
+                 break;
+            }
+
+        }
+    
+     </script>
+     <!--                          end message           -->
 </body>
 
 </html>

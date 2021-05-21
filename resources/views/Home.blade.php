@@ -45,7 +45,7 @@
                                 <div class="single_product_text">
                                     <h4>{{$r->nameProduct}}</h4>
                                     <h3>{{number_format($r->price,0)}} VNĐ</h3>
-                                    <a href="{{url('Cart'.'/'.$r->id)}}" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                    <!-- <a href="{{url('Cart'.'/'.$r->id)}}" class="add_cart">+ add to cart<i class="ti-heart"></i></a> -->
                                 </div>
                             </a>
                         

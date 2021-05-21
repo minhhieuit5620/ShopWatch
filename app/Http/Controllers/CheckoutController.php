@@ -9,6 +9,8 @@ use Session;
 use Cart;
 use Carbon\Carbon;
 session_start();
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Support\MessageBag;
 class CheckoutController extends Controller
 {
     public function login_checkout(){
@@ -68,6 +70,11 @@ class CheckoutController extends Controller
             $order_d_id=DB::table('order_detail')->insert($ord_d_data);
         }
         Cart::destroy();
+        \Session::flash('toastr',[
+            'type' => 'success',
+            'message' => 'Đặt hàng thành công'
+        ]);
+    
         return view('/Order_Success'); 
     }
     public function Order_view(){
@@ -101,6 +108,43 @@ class CheckoutController extends Controller
        ->where('order_detail.order_id',$id)->get();
        return view('/Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
     }
+    public function EditCustomer(request $req,$id){
+        //$customer_id=Session::get('customer_id');
+        $cus_edit=array();
+        
+        $cus_edit['customer_name']=$req->txtname;
+        $cus_edit['customer_email']=$req->txtemail;
+        $cus_edit['customer_phone']=$req->txtphone;   
+        if($req->checkpassword == "on")
+        {
+            $this->validate($req,[
+                'password'=> 'required|min:3|max:32',
+                'passwordAgain'=> 'required|same:password'
+            ],[
+                'password.required'=> 'Bạn chưa nhập mật khẩu',
+                //  Session::flash('toastr',[
+                //     'type' => 'error',
+                //     'message' => 'Bạn chưa nhập mật khẩu'
+                // ])             
+                // 'password.min'=>  Session::flash('toastr',[
+                //     'type' => 'error',
+                //     'message' => 'Mật khẩu của bạn phải chứa ít nhất 3 kí tự'
+                // ]),
+                'password.min'=>'Mật khẩu của bạn phải chứa ít nhất 3 kí tự',
+                'password.max'=>'Mật khẩu của bạn chỉ chứa tối đa 32 kí tự',
+                'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
+                'passwordAgain.same'=>'Mật khẩu của bạn không trùng khớp'
+            ]);
+              
+            $cus_edit['customer_password']=md5($req->password);   
+        }  
+        $cus_edit=DB::table('customer')->where('customer_id',$id)->update($cus_edit);
+        Session::flash('toastr',[
+            'type' => 'success',
+            'message' => 'Cập nhật thông tin thành công !'
+        ]); 
+        return redirect('/Customer');
+    }
     public function Logout_checkout(){
         Session::flush();
         return Redirect('/login-checkout');
@@ -111,9 +155,18 @@ class CheckoutController extends Controller
         $password=md5($req->password_account);
         $result=DB::table('customer')->where('customer_email',$email)->where('customer_password',$password)->first();
         if($result){
-            Session::put('customer_id',$result->customer_id);     
+            Session::put('customer_id',$result->customer_id); 
+            Session::flash('toastr',[
+                'type' => 'success',
+                'message' => 'Đăng nhập thành công'
+            ]);    
             return Redirect::to('/Checkout'); 
         }else{
+          
+            Session::flash('toastr',[
+                'type' => 'error',
+                'message' => 'Thông tin đăng nhập sai , vui lòng kiểm tra và đăng nhập lại'
+            ]);    
             return Redirect::to('/login-checkout');
         }
        

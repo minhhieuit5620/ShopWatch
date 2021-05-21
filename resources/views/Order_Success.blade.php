@@ -80,6 +80,7 @@
         <h1 class="text-center">Bạn đã đặt hàng thành công !!</h1>
         <h5 class="text-center"><a href="{{URL::to('/Order-view')}}">Nhấn vào đây để xem chi tiết đơn hàng</a> hoặc <a href="/">quay lại cửa hàng</a></h5>
         </div>
+        
       </div>
   </section>
   <!--================End Cart Area =================-->

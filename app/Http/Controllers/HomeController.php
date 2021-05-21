@@ -7,10 +7,11 @@ use  App\Models\ProductModel;
 use  App\Models\CategoryModel;
 use  App\Models\MenuModel;
 use  App\Models\xedapmodel;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redirect;
 use DB;
 use Session;
+use Carbon\Carbon;
 use Cart;
 session_start();
 class HomeController extends Controller
@@ -74,6 +75,7 @@ class HomeController extends Controller
         $phukien=DB::table('product')->where('idcategory','=','5')->get();
         return view('PhuKien')->with('phukien',$phukien);
     }
+    
     public function footer(){
         $lsp=DB::table('category')->orderby('id','asc')->get();//->take(4)
         $th=DB::table('trademark')->orderby('id','asc')->take(4)->get();

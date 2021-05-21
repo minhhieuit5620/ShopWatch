@@ -144,11 +144,11 @@
             aria-selected="true">Chi tiết sản phẩm</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+          <a class="nav-link " id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
             aria-selected="false">Thông số kĩ thuật</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+          <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
             aria-selected="false">Bình luận</a>
         </li>
        
@@ -160,7 +160,7 @@
           </p>
           
         </div>
-        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
           <div class="table-responsive">
           
             <table class="table">
@@ -234,29 +234,28 @@
           
           </div>
         </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
           <div class="row">
             <div class="col-lg-6">
               <div class="comment_list">
+                @foreach($get_cmt as $r)
                 <div class="review_item">
                   <div class="media">
                     <div class="d-flex">
                       <img src="../img/product/single-product/review-1.png" alt="" />
                     </div>
                     <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
+                      <h4>{{$r->customer_name}}</h4>
+                      <h5>{{date('d/m/Y H:i',strtotime($r->comment_date))}}</h5>
                       <a class="reply_btn" href="#">Reply</a>
                     </div>
                   </div>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
+                    {{$r->content}}
                   </p>
                 </div>
-                <div class="review_item reply">
+                @endforeach
+                <!-- <div class="review_item reply">
                   <div class="media">
                     <div class="d-flex">
                       <img src="../img/product/single-product/review-2.png" alt="" />
@@ -291,42 +290,65 @@
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo
                   </p>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="review_box">
-                <h4>Post a comment</h4>
-                <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
-                  novalidate="novalidate">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" />
+              <?php
+              $customer_id=Session::get('customer_id');
+              if($customer_id != null){ 
+                ?>
+                <div class="review_box">
+                  <h4>Bình luận</h4>             
+                  <div class="comment-form" style="margin-top: 0;padding-top: 0;">               
+                    <form class="form-contact comment_form" action="{{URL::to('/Comment').'/'.$db->id}}" method="POST" id="commentForm">
+                      {{ csrf_field() }}
+                      <div class="row">
+                          <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="content" id="comment" cols="30" rows="9"
+                                  placeholder="Viết bình luận..."></textarea>
+                            </div>
+                          </div>                      
+                      </div>                       
+                      <button type="submit" class="btn_3 button-contactForm"> Gửi</button>                                                                  
+                    </form>
+                  </div>
+                </div>
+            </div>
+            <?php
+            }else{
+              ?>
+              <h4>Bạn chưa đăng nhập ? <br> Hãy đăng nhập để viết bình luận cho sản phẩm </h4>
+              <div class="login_part_form">
+                        <div class="login_part_form_iner">                           
+                            <form class="row contact_form"  action="{{URL::to('/login-customer')}}" method="post" novalidate="novalidate">
+                                {{csrf_field()}}
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="email_account" value=""
+                                        placeholder="Username">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="password" name="password_account" value=""
+                                        placeholder="Password">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account d-flex align-items-center">
+                                        <input type="checkbox" id="f-option" name="selector">
+                                        <label for="f-option">Ghi nhớ đăng nhập</label>
+                                    </div>
+                                    <button type="submit" value="submit" class="btn_3">
+                                       Đăng nhập
+                                    </button>
+                                    <a class="lost_pass" href="#">Quên mật khẩu ?</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" id="message" rows="1"
-                        placeholder="Message"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="btn_3">
-                      Submit Now
-                    </button>
-                  </div>
-                </form>
-              </div>
+              <?php
+            }
+            ?>
+             
             </div>
           </div>
         </div>

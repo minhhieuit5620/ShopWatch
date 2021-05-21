@@ -95,7 +95,7 @@
                                 </ul>
                                 <ul class="list">
                                     <li>
-                                        <a href="/Order_view"><i class="far fa-calendar-alt"></i> Đơn hàng của bạn</a>
+                                        <a href="/Order-view"><i class="far fa-calendar-alt"></i> Đơn hàng của bạn</a>
 
                                     </li>
                                 </ul>

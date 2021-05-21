@@ -26,12 +26,18 @@ Route::get('/Shop','App\Http\Controllers\HomeController@Shop');
 Route::get('/PhuKien','App\Http\Controllers\HomeController@phukien');
 Route::post('/Search','App\Http\Controllers\HomeController@Search');
 Route::get('/ProductCate/{id?}','App\Http\Controllers\HomeController@ProductCate');
+
+//Comment
+
+Route::post('/Comment/{id?}','App\Http\Controllers\ProductDetailController@Comment');
+Route::get('/Comment/{id?}','App\Http\Controllers\ProductDetailController@GetComment');
 //Route::get('/Cart/{id?}','App\Http\Controllers\CartController@Addcart');
+
+
 
 //Contact
 Route::get('/Blog','App\Http\Controllers\ContactController@Blog');
 Route::get('/DetailBlog/{id?}','App\Http\Controllers\ContactController@DetailBlog');
-
 Route::get('/GioiThieu','App\Http\Controllers\ContactController@gioithieu');
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
@@ -47,8 +53,11 @@ Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_custome
 Route::get('/Checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::get('/Order-view','App\Http\Controllers\CheckoutController@Order_view');
 Route::get('/Customer','App\Http\Controllers\CheckoutController@Customer');
+
+Route::post('/EditCustomer/{id?}','App\Http\Controllers\CheckoutController@EditCustomer');
 Route::get('/Order_detail/{id?}','App\Http\Controllers\CheckoutController@Order_detail_view');
 Route::post('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
+Route::get('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
 Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_customer');
 
 /*----------------------------------End Front-End--------------------------------------------------*/
