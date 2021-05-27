@@ -88,6 +88,7 @@
                                 <a class="d-inline-block" href="{{URL::to('/DetailBlog/'.$r->id)}}">
                                     <h2>{{$r->nameBlog}}</h2>
                                 </a>
+                                <!-- cắt xâu -->
                                 <p>{!! Str::limit($r->description, 220, ' ...') !!}</p>
                                 <ul class="blog-info-link">
                                     <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
@@ -119,24 +120,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <!--aside class="single_sidebar_widget search_widget">
-                            <form action="#">
-                                <div class="form-group">
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Search Keyword'">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="button"><i class="ti-search"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1"
-                                    type="submit">Search</button>
-                            </form>
-                        </aside-->
-
+                    <div class="blog_right_sidebar">                       
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Tin tức</h4>
                             @foreach($cbl as $r)
@@ -183,19 +167,53 @@
 
 
                        
+                        <?php
+                        $customer_id=Session::get('customer_id');
+                        if($customer_id!=null){
+                            ?>
+                            
 
+                        <?php
+                        }else{
+                            ?>
                         <aside class="single_sidebar_widget newsletter_widget">
-                            <h4 class="widget_title">Đăng kí</h4>
-
-                            <form action="#">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'" placeholder='Email của bạn' required>
+                       
+                            <!-- <button class="button rounded-0 primary-bg text-white w-100 btn_1"
+                                        type="submit"><a href=""> Đăng nhập</a></button>
+                                    <h4 class="text-center">hoặc</h4>
+                                     <h4 class="widget_title">hoặc</h4>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1"
+                                        type="submit"><a href="">Đăng kí</a> </button> -->
+                            <form class="row contact_form"  action="{{URL::to('/login-customer')}}" method="post" novalidate="novalidate">
+                                {{csrf_field()}}
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="email_account" value=""
+                                        placeholder="Username">
                                 </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1"
-                                    type="submit">Đăng kí</button>
-                            </form>
-                        </aside>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="password" name="password_account" value=""
+                                        placeholder="Password">
+                                </div>
+                                <div class="col-md-12 form-group">                                  
+                                    <button type="submit" value="submit" class="button rounded-0 primary-bg text-white w-100 btn_3">
+                                       Đăng nhập
+                                    </button>                                  
+                                </div>
+                            </form> 
+                            <h4 class="text-center">hoặc</h4>   
+                            <a href="/Sign-up" style="color:#fff !important;">
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_3" type="submit">
+                               
+                                Đăng kí
+                                                       
+                                </button>    
+                                </a>       
+                           
+                        </aside>    
+                        <?php
+                        }                        
+                        ?>
+                       
                     </div>
                 </div>
             </div>

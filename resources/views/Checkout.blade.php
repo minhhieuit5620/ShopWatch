@@ -180,11 +180,11 @@
               </ul>
               
               <div class="creat_account">
-                <input type="checkbox" id="f-option4" name="selector" />
+                <input type="checkbox" id="chapnhan" name="selector" />
                 <label for="f-option4">Tôi đã đọc và chấp nhận </label>
                 <a href="#">điều khoản và điều kiện *</a>
               </div>
-              <button class="btn_3"  id="tt" name="send_order"type="submit">Thanh toán khi nhận hàng</button>
+              <button class="btn_3"  id="tt" name="send_order"type="submit" disabled >Thanh toán khi nhận hàng</button>
             </div>
           </div>
         </div>
@@ -330,13 +330,21 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
-  <script>
-/* $(document).ready(function() {
-  $("#tt").click(function() {
-    alertify.success('Bạn đã đặt hàng thành công');
-  });
- });*/
-  </script>
+<!-- chấp nhận chứng chỉ -->
+<script>
+    $(document).ready(function(){
+        $("#chapnhan").change(function(){
+            if($(this).is(":checked")){
+                $("#tt").removeAttr('disabled');
+            }
+            else{
+                $("#tt").attr('disabled','enddisabled');
+            }
+        });
+    });
+    
+    </script>
+    <!-- end xác nhận -->
   <!--                         Thông báo               -->
     <!-- link js toastr -->
     <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>

@@ -150,7 +150,7 @@
                   <h5>Tổng tiền </h5>
                 </td>
                 <td>
-                  <h5> {{Cart::subtotal()}} VNĐ</h5>
+                  <h5>  <?php echo str_replace(".00"," ",Cart::subtotal()) ?> VNĐ</h5>
                 </td>
                 <td></td>
               </tr>

@@ -38,6 +38,10 @@ Route::get('/Comment/{id?}','App\Http\Controllers\ProductDetailController@GetCom
 //Contact
 Route::get('/Blog','App\Http\Controllers\ContactController@Blog');
 Route::get('/DetailBlog/{id?}','App\Http\Controllers\ContactController@DetailBlog');
+//Comment Blog
+Route::post('/Cmt-Blog/{id?}','App\Http\Controllers\ContactController@Comment_blog');
+Route::get('/Cmt-Blog/{id?}','App\Http\Controllers\ContactController@GetComment_blog');
+//Giới thiệu
 Route::get('/GioiThieu','App\Http\Controllers\ContactController@gioithieu');
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');

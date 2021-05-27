@@ -247,7 +247,7 @@
                     <div class="media-body">
                       <h4>{{$r->customer_name}}</h4>
                       <h5>{{date('d/m/Y H:i',strtotime($r->comment_date))}}</h5>
-                      <a class="reply_btn" href="#">Reply</a>
+                      <a class="reply_btn" href="#">Trả lời</a>
                     </div>
                   </div>
                   <p>

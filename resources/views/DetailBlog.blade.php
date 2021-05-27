@@ -28,13 +28,21 @@
 </head>
 
 <body>
+<style>
+p{
+   font-family: Arial, Helvetica, sans-serif;
+}
+strong{
+   font-family: Arial, Helvetica, sans-serif;
+}
+</style>
    <!--::header part start::-->
    <header class="main_menu home_menu">
       <div class="container">
           <div class="row align-items-center">
               <div class="col-lg-12">
                   <nav class="navbar navbar-expand-lg navbar-light">
-                      <a class="navbar-brand" href="index.html"> <img src="../img/logo.png" alt="logo"> </a>
+                      <a class="navbar-brand" href="/"> <img src="../img/logo.png" alt="logo"> </a>
                       <button class="navbar-toggler" type="button" data-toggle="collapse"
                           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                           aria-expanded="false" aria-label="Toggle navigation">
@@ -72,26 +80,28 @@
          <div class="row">
          <?php
         ?>
-         @foreach($debl as $r)
+        
             <div class="col-lg-8 posts-list">
-               <div class="single-post">
-                  
-                  <div class="blog_details">
-                     <h2>{{$r->nameBlog}}
-                     </h2>
-                     <div class="feature-img">
-                     <img class="img-fluid" src="../img/blog/{{$r->image}}" alt="">
+               @foreach($debl as $r)
+                  <div class="single-post">
+                     
+                     <div class="blog_details">
+                        <h2>{{$r->nameBlog}}
+                        </h2>
+                        <div class="feature-img">
+                        <img class="img-fluid" src="../img/blog/{{$r->image}}" alt="">
+                     </div>
+                        <!-- <ul class="blog-info-link mt-3 mb-4">
+                           <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
+                           <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                        </ul> -->
+                        <p class="excert">
+                           {!!$r->description!!}
+                        </p>
+                     
+                     </div>
                   </div>
-                     <!-- <ul class="blog-info-link mt-3 mb-4">
-                        <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
-                        <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
-                     </ul> -->
-                     <p class="excert">
-                        {!!$r->description!!}
-                     </p>
-                   
-                  </div>
-               </div>
+               @endforeach   
                <div class="navigation-top">
                   <div class="d-sm-flex justify-content-between text-center">
                      <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4
@@ -106,7 +116,7 @@
                         <li><a href="#"><i class="fab fa-behance"></i></a></li>
                      </ul>
                   </div>
-                  <div class="navigation-area">
+                  <!-- <div class="navigation-area">
                      <div class="row">
                         <div
                            class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
@@ -147,134 +157,74 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                </div>
                <div class="blog-author">
                   <div class="media align-items-center">
                      <img src="../img/blog/author.png" alt="">
                      <div class="media-body">
                         <a href="#">
-                           <h4>Harvard milan</h4>
+                           <h4>Tên </h4>
                         </a>
-                        <p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he
-                           our dominion twon Second divided from</p>
+                        <p>Bài viết của Hứa Minh Hiếu</p>
                      </div>
                   </div>
                </div>
                <div class="comments-area">
                   <h4>05 Comments</h4>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="img/comment/comment_1.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
+                  @foreach($Get_CMT as $r)
+                     <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                           <div class="user justify-content-between d-flex">
+                              <div class="thumb">
+                                 <img src="img/comment/comment_3.png" alt="">
+                              </div>
+                              <div class="desc">
+                                 <p class="comment">
+                                 {{$r->content}}
+                                 </p>
+                                 <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                       <h5>
+                                          <a href="#">{{$r->customer_name}}</a>
+                                       </h5>
+                                       <p class="date">{{date('d/m/Y H:i',strtotime($r->date_comment))}} </p>
+                                    </div>
+                                    <div class="reply-btn">
+                                       <a href="#" class="btn-reply text-uppercase">Trả lời</a>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="img/comment/comment_2.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="img/comment/comment_3.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  @endforeach
                </div>
+               @foreach($debl as $r)
                <div class="comment-form">
-                  <h4>Leave a Reply</h4>
-                  <form class="form-contact comment_form" action="#" id="commentForm">
+                  <h4>Bình luận</h4>
+                  <form class="form-contact comment_form" action="{{URL::to('/Cmt-Blog/'.$r->id)}}" method="Post" id="commentForm">
+                     {{csrf_field()}}
                      <div class="row">
                         <div class="col-12">
                            <div class="form-group">
                               <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                 placeholder="Write Comment"></textarea>
+                                 placeholder="Viết bình luận của bạn ....."></textarea>
                            </div>
                         </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                           </div>
-                        </div>
-                        <div class="col-12">
-                           <div class="form-group">
-                              <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                           </div>
-                        </div>
+                                           
                      </div>
                      <div class="form-group mt-3">
-                        <a href="#" class="btn_3 button-contactForm">Send Message</a>
+                     <button type="submit" class="btn_3 button-contactForm">
+                        Bình luận
+                     </button>
+                        <!-- <a href="#" class="btn_3 button-contactForm">Send Message</a> -->
                      </div>
                   </form>
                </div>
+               @endforeach
             </div>
-        @endforeach
+       
             <div class="col-lg-4">
                <div class="blog_right_sidebar">
                   <aside class="single_sidebar_widget search_widget">
@@ -336,17 +286,50 @@
                             </div>
                            @endforeach
                   </aside>
-                  <aside class="single_sidebar_widget newsletter_widget">
-                     <h4 class="widget_title">Newsletter</h4>
-                     <form action="#">
-                        <div class="form-group">
-                           <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                              onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                        </div>
-                        <button class="button rounded-0 primary-bg text-white w-100 btn_1"
-                           type="submit">Subscribe</button>
-                     </form>
-                  </aside>
+                  <?php
+                        $customer_id=Session::get('customer_id');
+                        if($customer_id==null){
+                            ?>
+                            
+
+                       
+                        <aside class="single_sidebar_widget newsletter_widget">
+                       
+                            <!-- <button class="button rounded-0 primary-bg text-white w-100 btn_1"
+                                        type="submit"><a href=""> Đăng nhập</a></button>
+                                    <h4 class="text-center">hoặc</h4>
+                                     <h4 class="widget_title">hoặc</h4>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1"
+                                        type="submit"><a href="">Đăng kí</a> </button> -->
+                            <form class="row contact_form"  action="{{URL::to('/login-customer')}}" method="post" novalidate="novalidate">
+                                {{csrf_field()}}
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control"  name="email_account" value=""
+                                        placeholder="Username">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="password" name="password_account" value=""
+                                        placeholder="Password">
+                                </div>
+                                <div class="col-md-12 form-group">                                  
+                                    <button type="submit" value="submit" class="button rounded-0 primary-bg text-white w-100 btn_3">
+                                       Đăng nhập
+                                    </button>                                  
+                                </div>
+                            </form> 
+                            <h4 class="text-center">hoặc</h4>   
+                            <a href="/Sign-up" style="color:#fff !important;">
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_3" type="submit">
+                               
+                                Đăng kí
+                                                       
+                                </button>    
+                                </a>       
+                           
+                        </aside>    
+                        <?php
+                        }                        
+                        ?>
                </div>
             </div>
          </div>

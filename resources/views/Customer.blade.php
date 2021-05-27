@@ -126,6 +126,7 @@
                 <div class="col-lg-9">
                     
                     <h3 class="text-center">Tài khoản của bạn</h3>
+                    <!-- hiển thị thông báo -->
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -135,6 +136,7 @@
                             </ul>
                         </div>
                     @endif
+                    <!-- end thông báo -->
                     <br>
                     @foreach($thong_tin as $r)
                     <form action="{{URL::to('/EditCustomer/'.$r->customer_id)}}" method="post">

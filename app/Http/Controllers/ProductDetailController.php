@@ -10,7 +10,7 @@ use  App\Models\ProductInfoModel;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Session;
-use Carbon\Carbon;
+use Carbon\Carbon;// thư viện datetime
 use Cart;
 session_start();
 class ProductDetailController extends Controller
@@ -46,10 +46,10 @@ class ProductDetailController extends Controller
         $cmt=DB::table('comment_product')->insert($cmt);
         return redirect()->back();
     }
-    public function GetComment($id){
-        $get_cmt=DB::table('comment_product')->where('id_product',$id)->get();
-        return view('/DetailProduct')->with('get_cmt',$get_cmt);
-    }
+    // public function GetComment($id){
+    //     $get_cmt=DB::table('comment_product')->where('id_product',$id)->get();
+    //     return view('/DetailProduct')->with('get_cmt',$get_cmt);
+    // }
     
 
     

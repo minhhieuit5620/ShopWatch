@@ -19,6 +19,8 @@ class CheckoutController extends Controller
     public function sign_up(){
         return view('Sign_up');
     }
+
+    //thêm người dùng-- đăng kí
     public function add_customer(Request $req){
         $data=array();
         $data['customer_name']=$req->customer_name;
@@ -70,7 +72,7 @@ class CheckoutController extends Controller
             $order_d_id=DB::table('order_detail')->insert($ord_d_data);
         }
         Cart::destroy();
-        \Session::flash('toastr',[
+        Session::flash('toastr',[
             'type' => 'success',
             'message' => 'Đặt hàng thành công'
         ]);
@@ -94,6 +96,7 @@ class CheckoutController extends Controller
        // $ord_d=DB::table('order_detail')->where('order_id',$order->order_id)->first();
         return view('Order_view',['order'=>$order,'thong_tin'=>$thong_tin]);
     }
+    //thông tin người dùng
     public function Customer(){
         $customer_id=Session::get('customer_id');
         $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();        
@@ -108,6 +111,7 @@ class CheckoutController extends Controller
        ->where('order_detail.order_id',$id)->get();
        return view('/Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
     }
+    // người dùng cập nhật tài khoản
     public function EditCustomer(request $req,$id){
         //$customer_id=Session::get('customer_id');
         $cus_edit=array();

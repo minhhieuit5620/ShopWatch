@@ -69,51 +69,49 @@
                             
                         </div>
                         <div class="modal-body">
-                        
-                            <table class="table table-bordered table-hover">                
-                                <tbody>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td><input type="text" name="txtid"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>ID loại sản phẩm</td>
-                                        <td><input type="text" name="txtcte"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tên sản phẩm</td>
-                                        <td><input type="text" name="txtname"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chi tiết</td>
-                                        <td><input type="text" name="txtct"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hình ảnh</td>
-                                        <td><input type="file" name="txtimg"> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>trang thai</td>
-                                        <td><input type="checkbox" name="cbtt"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>giá bán</td>
-                                        <td><input type="text" name="txtgb"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>giá cũ</td>
-                                        <td><input type="text" name="txtgc"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>giá nhập</td>
-                                        <td><input type="text" name="txtgn"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>số lượng</td>
-                                        <td><input type="text" name="txtsl"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="form-group">
+                              <label for="">Id</label>
+                              <input type="text" name="txtid" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Id loại sản phẩm</label>
+                              <input type="text" name="txtcte" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Tên sản phẩm</label>
+                              <input type="text" name="txtname" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Chi tiết</label>
+                              <input type="text" name="txtct" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Hình ảnh</label>
+                              <input type="file" name="txtimg" id="" class="form-control-file" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label class="form-check-label">Trạng thái</label>
+                              <input type="checkbox" name="cbtt" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Giá bán</label>
+                              <input type="text" name="txtgb" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Giá cũ</label>
+                              <input type="text" name="txtgc" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Giá nhập</label>
+                              <input type="text" name="txtgn" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+                            <div class="form-group">
+                              <label for="">Số lượng</label>
+                              <input type="text" name="txtsl" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                            </div>
+
+
+                           
                                 
                         
                         </div>
