@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Models\ProductModel;
 use  App\Models\CategoryModel;
@@ -16,8 +17,6 @@ use Cart;
 session_start();
 class HomeController extends Controller
 {
-
-    //
     public function index(){
        
         $db=ProductModel::take(8)->get();
@@ -51,8 +50,14 @@ class HomeController extends Controller
         //$db=ProductModel::all();
         //$ct=CategoryModel::take(10)->get();
         $ct=DB::table('category')->orderby('id','asc')->get();
-        $th=DB::table('trademark')->orderby('id','asc')->get();
-        return view('Shop',$data)->with('ct',$ct)->with('th',$th);
+        $th=DB::table('trademark')->orderby('id','asc')->TAKE(5)->get();
+
+        $lsp=DB::table('category')->orderby('id','asc')->get();//->take(4)       
+        $menu=DB::table('menu')->orderby('id','asc')->get();
+        $tt=DB::table('blog')->orderby('id','asc')->get();
+        
+        return view('Shop',$data)->with('ct',$ct)
+        ->with('th',$th)->with('menu',$menu)->with('tt',$tt)->with('lsp',$lsp);
     }
     public function ProductCate($id=null){
         $prc=DB::table('product')->where('idcategory',$id)->get();
@@ -83,5 +88,4 @@ class HomeController extends Controller
         $tt=DB::table('blog')->orderby('id','asc')->get();
         return view('Home')->with('lsp',$lsp)->with('th',$th)->with('menu',$menu)->with('tt',$tt);
     }
-   
 }

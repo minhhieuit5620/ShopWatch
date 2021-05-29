@@ -18,51 +18,52 @@ Route::get('/', function () {
 });
 /*----------------------------------Front-End--------------------------------------------------*/
 //font-end
-Route::get('/','App\Http\Controllers\HomeController@index');
-Route::get('/menu','App\Http\Controllers\HomeController@menu')->name('mainmenu');
-Route::get('/Footer','App\Http\Controllers\HomeController@footer')->name('footer');
-Route::get('/DetailProduct/{id?}','App\Http\Controllers\ProductDetailController@ctsp')->name('fDetail');
-Route::get('/Shop','App\Http\Controllers\HomeController@Shop');
-Route::get('/PhuKien','App\Http\Controllers\HomeController@phukien');
-Route::post('/Search','App\Http\Controllers\HomeController@Search');
-Route::get('/ProductCate/{id?}','App\Http\Controllers\HomeController@ProductCate');
+Route::get('/','App\Http\Controllers\Frontend\HomeController@index');
+Route::get('/menu','App\Http\Controllers\Frontend\HomeController@menu')->name('mainmenu');
+Route::get('/Footer','App\Http\Controllers\Frontend\HomeController@footer')->name('footer');
+Route::get('/DetailProduct/{id?}','App\Http\Controllers\Frontend\ProductDetailController@ctsp')->name('fDetail');
+Route::get('/Shop','App\Http\Controllers\Frontend\HomeController@Shop');
+Route::get('/PhuKien','App\Http\Controllers\Frontend\HomeController@phukien');
+Route::post('/Search','App\Http\Controllers\Frontend\HomeController@Search');
+Route::get('/ProductCate/{id?}','App\Http\Controllers\Frontend\HomeController@ProductCate');
 
 //Comment
 
-Route::post('/Comment/{id?}','App\Http\Controllers\ProductDetailController@Comment');
-Route::get('/Comment/{id?}','App\Http\Controllers\ProductDetailController@GetComment');
+Route::post('/Comment/{id?}','App\Http\Controllers\Frontend\ProductDetailController@Comment');
+Route::get('/Comment/{id?}','App\Http\Controllers\Frontend\ProductDetailController@GetComment');
 //Route::get('/Cart/{id?}','App\Http\Controllers\CartController@Addcart');
 
 
 
 //Contact
-Route::get('/Blog','App\Http\Controllers\ContactController@Blog');
-Route::get('/DetailBlog/{id?}','App\Http\Controllers\ContactController@DetailBlog');
+Route::get('/Blog','App\Http\Controllers\Frontend\ContactController@Blog');
+Route::get('/DetailBlog/{id?}','App\Http\Controllers\Frontend\ContactController@DetailBlog');
 //Comment Blog
-Route::post('/Cmt-Blog/{id?}','App\Http\Controllers\ContactController@Comment_blog');
-Route::get('/Cmt-Blog/{id?}','App\Http\Controllers\ContactController@GetComment_blog');
+Route::post('/Cmt-Blog/{id?}','App\Http\Controllers\Frontend\ContactController@Comment_blog');
+Route::get('/Cmt-Blog/{id?}','App\Http\Controllers\Frontend\ContactController@GetComment_blog');
 //Giới thiệu
-Route::get('/GioiThieu','App\Http\Controllers\ContactController@gioithieu');
+Route::get('/GioiThieu','App\Http\Controllers\Frontend\ContactController@gioithieu');
 //Cart
-Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
-Route::get('/Cart','App\Http\Controllers\CartController@show_cart');
-Route::get('/delete-to-cart/{rowId}','App\Http\Controllers\CartController@delete_to_cart');
-Route::post('/update-cart-qty','App\Http\Controllers\CartController@update_cart_qty');
+Route::post('/save-cart','App\Http\Controllers\Frontend\CartController@save_cart');
+Route::get('/Cart','App\Http\Controllers\Frontend\CartController@show_cart');
+Route::get('/delete-to-cart/{rowId}','App\Http\Controllers\Frontend\CartController@delete_to_cart');
+Route::post('/update-cart-qty','App\Http\Controllers\Frontend\CartController@update_cart_qty');
 
 //Check-out
-Route::get('/login-checkout','App\Http\Controllers\CheckoutController@login_checkout');
-Route::get('/logout-checkout','App\Http\Controllers\CheckoutController@Logout_checkout');
-Route::get('/Sign-up','App\Http\Controllers\CheckoutController@Sign_up');
-Route::post('/add-customer','App\Http\Controllers\CheckoutController@add_customer');
-Route::get('/Checkout','App\Http\Controllers\CheckoutController@checkout');
-Route::get('/Order-view','App\Http\Controllers\CheckoutController@Order_view');
-Route::get('/Customer','App\Http\Controllers\CheckoutController@Customer');
+Route::get('/login-checkout','App\Http\Controllers\Frontend\CheckoutController@login_checkout');
+Route::get('/logout-checkout','App\Http\Controllers\Frontend\CheckoutController@Logout_checkout');
+Route::get('/Sign-up','App\Http\Controllers\Frontend\CheckoutController@Sign_up');
+Route::post('/add-customer','App\Http\Controllers\Frontend\CheckoutController@add_customer');
+Route::get('/Checkout','App\Http\Controllers\Frontend\CheckoutController@checkout');
+Route::get('/Order-view','App\Http\Controllers\Frontend\CheckoutController@Order_view');
+Route::get('/Customer','App\Http\Controllers\Frontend\CheckoutController@Customer');
 
-Route::post('/EditCustomer/{id?}','App\Http\Controllers\CheckoutController@EditCustomer');
-Route::get('/Order_detail/{id?}','App\Http\Controllers\CheckoutController@Order_detail_view');
-Route::post('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
-Route::get('/save-checkout-customer','App\Http\Controllers\CheckoutController@save_checkout_customer');
-Route::post('/login-customer','App\Http\Controllers\CheckoutController@login_customer');
+//Customer
+Route::post('/EditCustomer/{id?}','App\Http\Controllers\Frontend\CheckoutController@EditCustomer');
+Route::get('/Order_detail/{id?}','App\Http\Controllers\Frontend\CheckoutController@Order_detail_view');
+Route::post('/save-checkout-customer','App\Http\Controllers\Frontend\CheckoutController@save_checkout_customer');
+Route::get('/save-checkout-customer','App\Http\Controllers\Frontend\CheckoutController@save_checkout_customer');
+Route::post('/login-customer','App\Http\Controllers\Frontend\CheckoutController@login_customer');
 
 /*----------------------------------End Front-End--------------------------------------------------*/
 

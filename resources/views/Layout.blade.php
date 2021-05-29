@@ -54,127 +54,21 @@
             @include('menu')
         </nav>
    
-            @yield('noibat')
-        </div>
         
     </header>
     <!-- Header part end-->
 
     <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="banner_slider owl-carousel">
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Hãy chọn phong cách hoàn hảo của bạn</h1>
-                                            <p>Phong cách nói lên sự đẳng cấp của bạn</p>
-                                            <a href="/Shop" class="btn_2">Mua sắm ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/slide/donghonam-10-20trieu-Citizen-NJ0090-21L-53-removebg-preview.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                        <h1>Hãy chọn phong cách hoàn hảo của bạn</h1>
-                                            <p>Phong cách nói lên sự đẳng cấp của bạn</p>
-                                            <a href="/Shop" class="btn_2">Mua sắm ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/slide/new_product2-removebg-preview.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                        <h1>Hãy chọn phong cách hoàn hảo của bạn</h1>
-                                            <p>Phong cách nói lên sự đẳng cấp của bạn</p>
-                                            <a href="/Shop" class="btn_2">Mua sắm ngay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/slide/new_product2-removebg-preview.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>Cloth $ Wood Sofa</h1>
-                                            <p>Incididunt ut labore et dolore magna aliqua quis ipsum
-                                                suspendisse ultrices gravida. Risus commodo viverra</p>
-                                            <a href="#" class="btn_2">buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img src="img/banner_img.png" alt="">
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="slider-counter"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @yield('slide')
+   
     <!-- banner part start-->
 
     <!-- feature_part start-->
-    <section class="feature_part padding_top">
-        <div class="container">
+   
            
-           
-               @yield('category')
-           
-        </div>
-    </section>
-    <!-- upcoming_event part start-->
-
-    <!-- product_list start-->
-    <section class="product_list section_padding">
-        <div class="container">
-           
-                    @yield('product')
-               
-        </div>
-    </section>
-    <!-- product_list part start-->
-
-    <!-- awesome_shop start-->
+               @yield('content')
+       
     
-    <!-- awesome_shop part start-->
-
-    <!-- product_list part start-->
-    <section class="product_list best_seller">
-        <div class="container">
-           
-                       @yield('bestsaller')
-                    </div>
-               
-        </div>
-    </section>
-    <!-- product_list part end-->
-
     <!-- subscribe_area part start-->
     <section class="subscribe_area section_padding">
         <div class="container">
@@ -219,7 +113,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                </script> Bản quyền thuộc   <a href="https://www.facebook.com/minhhieu562k/" target="_blank">MinhHieu</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </P>
                         </div>

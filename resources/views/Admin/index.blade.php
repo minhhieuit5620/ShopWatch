@@ -1,5 +1,22 @@
-@extends('Admin.Layout')
+@extends('Layout.LayoutAdmin')
+@section('css')
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
 
+<!-- Bootstrap CSS -->
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Font Awesome CSS -->
+<link href="../assets/font-awesome/css/all.css" rel="stylesheet" type="text/css" />
+
+<!-- Custom CSS -->
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+
+<!-- BEGIN CSS for this page -->
+<link rel="stylesheet" type="text/css" href="../assets/plugins/chart.js/Chart.min.css" />
+<link rel="stylesheet" type="text/css" href="../assets/plugins/datatables/datatables.min.css" />
+<!-- END CSS for this page -->
+@endsection
 @section('content')
     <div class="row">
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
@@ -71,43 +88,43 @@
                         <div class="modal-body">
                             <div class="form-group">
                               <label for="">Id</label>
-                              <input type="text" name="txtid" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtid" class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Id loại sản phẩm</label>
-                              <input type="text" name="txtcte" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtcte"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Tên sản phẩm</label>
-                              <input type="text" name="txtname" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtname"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Chi tiết</label>
-                              <input type="text" name="txtct" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtct"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Hình ảnh</label>
-                              <input type="file" name="txtimg" id="" class="form-control-file" placeholder="" aria-describedby="helpId">                              
+                              <input type="file" name="txtimg" class="form-control-file" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label class="form-check-label">Trạng thái</label>
-                              <input type="checkbox" name="cbtt" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="checkbox" name="cbtt"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Giá bán</label>
-                              <input type="text" name="txtgb" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtgb" class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Giá cũ</label>
-                              <input type="text" name="txtgc" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtgc"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Giá nhập</label>
-                              <input type="text" name="txtgn" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtgn"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
                             <div class="form-group">
                               <label for="">Số lượng</label>
-                              <input type="text" name="txtsl" id="" class="form-control" placeholder="" aria-describedby="helpId">                              
+                              <input type="text" name="txtsl"  class="form-control" placeholder="" aria-describedby="helpId">                              
                             </div>
 
 
@@ -183,4 +200,31 @@
                          <!-- end card-->
     </div>
 @endsection
-                   
+@section('js')
+ <!-- END main -->
+ <script src="../assets/js/modernizr.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/moment.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/detect.js"></script>
+    <script src="../assets/js/fastclick.js"></script>
+    <script src="../assets/js/jquery.blockUI.js"></script>
+    <script src="../assets/js/jquery.nicescroll.js"></script>
+    <!-- App js -->
+    <script src="../assets/js/admin.js"></script>
+    <!-- BEGIN Java Script for this page -->
+    <script src="../assets/plugins/chart.js/Chart.min.js"></script>
+    <script src="../assets/plugins/datatables/datatables.min.js"></script>
+
+    <!-- Counter-Up-->
+    <script src="../assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="../assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+    <!-- dataTabled data -->
+    <script src="../assets/data/data_datatables.js"></script>
+
+    <!-- Charts data -->
+    <!-- <script src="../assets/data/data_charts_dashboard.js"></script> -->
+
+@endsection                 

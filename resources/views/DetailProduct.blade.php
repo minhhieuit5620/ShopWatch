@@ -78,7 +78,7 @@
   <!--================End Home Banner Area =================-->
 
   <!--================Single Product Area =================-->
-  <div class="product_image_area section_padding">
+  <div class="product_image_area section_padding" style="padding-bottom:0px">
     <div class="container">
       <div class="row s_product_inner justify-content-between">
         <div class="col-lg-6 col-xl-6">
@@ -112,9 +112,7 @@
                   <a href=""> <span>Trạng thái</span> :  {{$db->status==1?"còn hàng":""}} {{$db->status==0?"hết hàng":""}} </a>
                 </li>
               </ul>
-              <p>
-                {!!$db->description!!}
-              </p>
+              
               <div class="card_area d-flex justify-content-between align-items-center">
                 <div class="product_count">
                   <span class="inumber-decrement"> <i class="ti-minus"></i></span>
@@ -164,72 +162,74 @@
           <div class="table-responsive">
           
             <table class="table">
+            @foreach($db3 as $r)
               <tbody>
                 <tr>
                   <td>
                     <h5>Nhãn Hiệu</h5>
                   </td>
                   <td>
-                    <h5></h5>
+                    <h5>{{$r->NhanHieu}}</h5>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h5>Height</h5>
+                    <h5>Nguồn gốc</h5>
                   </td>
                   <td>
-                    <h5>508mm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Depth</h5>
-                  </td>
-                  <td>
-                    <h5>85mm</h5>
+                    <h5>{{$r->NguonGoc}}</h5>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h5>Weight</h5>
+                    <h5>Kiểu máy</h5>
                   </td>
                   <td>
-                    <h5>52gm</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>Quality checking</h5>
-                  </td>
-                  <td>
-                    <h5>yes</h5>
+                    <h5>{{$r->KieuMay}}</h5>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h5>Freshness Duration</h5>
+                    <h5>Độ dày</h5>
                   </td>
                   <td>
-                    <h5>03days</h5>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h5>When packeting</h5>
-                  </td>
-                  <td>
-                    <h5>Without touch of hand</h5>
+                    <h5>{{$r->Doday}}</h5>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <h5>Each Box contains</h5>
+                    <h5>Chất liệu vỏ</h5>
                   </td>
                   <td>
-                    <h5>60pcs</h5>
+                    <h5>{{$r->ChatLieuVo}}</h5>
+                  </td>
+                </tr>
+                <tr>
+                <td>
+                    <h5>Chất liệu dây</h5>
+                  </td>
+                  <td>
+                    <h5>{{$r->ChatLieuDay}}</h5>
+                  </td>
+                </tr>
+                <tr>
+                <td>
+                    <h5>Độ chịu nước</h5>
+                  </td>
+                  <td>
+                    <h5>{{$r->DoChiuNuoc}}</h5>
+                  </td>
+                </tr>
+                <tr>
+                <td>
+                    <h5>Giới tính </h5>
+                  </td>
+                  <td>
+                    <h5>{{$r->GioiTinh}}</h5>
                   </td>
                 </tr>
               </tbody>
+            @endforeach
             </table>
           
           </div>
@@ -254,43 +254,7 @@
                     {{$r->content}}
                   </p>
                 </div>
-                @endforeach
-                <!-- <div class="review_item reply">
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="../img/product/single-product/review-2.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
-                      <a class="reply_btn" href="#">Reply</a>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div>
-                <div class="review_item">
-                  <div class="media">
-                    <div class="d-flex">
-                      <img src="../img/product/single-product/review-3.png" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4>Blake Ruiz</h4>
-                      <h5>12th Feb, 2017 at 05:56 pm</h5>
-                      <a class="reply_btn" href="#">Reply</a>
-                    </div>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                  </p>
-                </div> -->
+                @endforeach            
               </div>
             </div>
             <div class="col-lg-6">

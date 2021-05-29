@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Models\ProductModel;
 use  App\Models\CategoryModel;
@@ -15,13 +16,14 @@ use Cart;
 session_start();
 class ProductDetailController extends Controller
 {
-    public function ctsp($id=null,$prID=null){
+    public function ctsp($id=null){
         if($id!=null){
             $db=ProductModel::find($id);
             $db1=CategoryModel::find($db->idcategory);
             $db2=ProductModel::where('idcategory','=',$db->idcategory)->get();
+            $db3=DB::table('product_info')->where('ProductID',$id)->get();
            // if($prID==$id)
-                $db3=ProductInfoModel::where('ProductID',$prID)->get();
+            //$db3=ProductInfoModel::where('ProductID',$prID)->get();
             $get_cmt=DB::table('comment_product')->join('customer','comment_product.id_customer','=','customer.customer_id')->where('id_product',$id)->get();
             // Carbon::setLocale('vi'); // hiển thị ngôn ngữ tiếng việt.
             // $dt = Carbon::create(2018, 10, 18, 14, 40, 16);
