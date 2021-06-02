@@ -18,7 +18,24 @@
 <!-- END CSS for this page -->
 @endsection
 @section('content')
-    <div class="row">
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+  
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left">Chào mừng bạn đến với hệ thống quản trị  <i class="fas fa-user-lock"></i></h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item">Trang chủ</li>
+                                    
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
             <div class="card-box noradius noborder bg-danger">
                 <i class="far fa-user float-right text-white"></i>
@@ -53,11 +70,16 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card mb-3">
-                               
-            <div class="card-body">
-            <h1 class="text-center">Danh sách sản phẩm</h1>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3>
+                            <i class="fas fa-th"></i><font _mstmutation="1" _msthash="1743274" _msttexthash="1575912"> Sản phẩm</font></h3>
+                        </div>
+                        <div class="card-body" _msthash="1499953" _msttexthash="2568748">
+                        <h1 class="text-center">Danh sách sản phẩm</h1>
             
             <a class="btn btn-primary"  style=" margin-bottom:20px;"data-toggle="modal" href='#modal-id'> <i class="fas fa-plus"></i> Thêm mới</a>
             <form style="float:right;" >
@@ -194,11 +216,17 @@
              <nav>
              {!! $sp->appends(['trang'=>'admin'])->links() !!}
              </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
-                             <!-- end card-body-->
+            <!-- end row -->
         </div>
-                         <!-- end card-->
+        <!-- END container-fluid -->
     </div>
+    <!-- END content -->
+</div>
+
 @endsection
 @section('js')
  <!-- END main -->

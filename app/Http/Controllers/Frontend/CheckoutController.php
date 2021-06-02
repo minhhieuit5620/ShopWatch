@@ -15,10 +15,10 @@ use Illuminate\Support\MessageBag;
 class CheckoutController extends Controller
 {
     public function login_checkout(){
-        return view('Login_Checkout');
+        return view('Front.Login_Checkout');
     }
     public function sign_up(){
-        return view('Sign_up');
+        return view('Front.Sign_up');
     }
 
     //thêm người dùng-- đăng kí
@@ -33,13 +33,13 @@ class CheckoutController extends Controller
 
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$req->customer_name);
-        return Redirect('/Checkout'); 
+        return Redirect('Front.Checkout'); 
     }
     public function checkout(){
         $customer_id=Session::get('customer_id');
         $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();
         // print_r($thong_tin);
-        return view('/Checkout')->with('thong_tin',$thong_tin);
+        return view('Front.Checkout')->with('thong_tin',$thong_tin);
     }
     public function save_checkout_customer(Request $req){
         $data=array();
@@ -78,7 +78,7 @@ class CheckoutController extends Controller
             'message' => 'Đặt hàng thành công'
         ]);
     
-        return view('/Order_Success'); 
+        return view('Front.Order_Success'); 
     }
     public function Order_view(){
         $customer_id=Session::get('customer_id');
@@ -95,13 +95,13 @@ class CheckoutController extends Controller
         //$order=DB::table('customer')->join('order','customer.$customer_id','=','order.customer_id')
         //$order=DB::table('order')->where('customer_id',$customer_id)->first();
        // $ord_d=DB::table('order_detail')->where('order_id',$order->order_id)->first();
-        return view('Order_view',['order'=>$order,'thong_tin'=>$thong_tin]);
+        return view('Front.Order_view',['order'=>$order,'thong_tin'=>$thong_tin]);
     }
     //thông tin người dùng
     public function Customer(){
         $customer_id=Session::get('customer_id');
         $thong_tin=DB::table('customer')->where('customer.customer_id',$customer_id)->get();        
-        return view('Customer')->with('thong_tin',$thong_tin);
+        return view('Front.Customer')->with('thong_tin',$thong_tin);
     }
     public function Order_detail_view($id){
         $customer_id=Session::get('customer_id');
@@ -110,7 +110,7 @@ class CheckoutController extends Controller
        ->join('order_detail','order.order_id','=','order_detail.order_id')
        ->join('product','order_detail.product_id','=','product.id')
        ->where('order_detail.order_id',$id)->get();
-       return view('/Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
+       return view('Front.Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
     }
     // người dùng cập nhật tài khoản
     public function EditCustomer(request $req,$id){
@@ -152,7 +152,7 @@ class CheckoutController extends Controller
     }
     public function Logout_checkout(){
         Session::flush();
-        return Redirect('/login-checkout');
+        return Redirect('Front.login-checkout');
     }
     public function Login_customer(Request $req){
         
@@ -165,14 +165,14 @@ class CheckoutController extends Controller
                 'type' => 'success',
                 'message' => 'Đăng nhập thành công'
             ]);    
-            return Redirect::to('/Checkout'); 
+            return Redirect::to('Front.Checkout'); 
         }else{
           
             Session::flash('toastr',[
                 'type' => 'error',
                 'message' => 'Thông tin đăng nhập sai , vui lòng kiểm tra và đăng nhập lại'
             ]);    
-            return Redirect::to('/login-checkout');
+            return Redirect::to('Front.login-checkout');
         }
        
 

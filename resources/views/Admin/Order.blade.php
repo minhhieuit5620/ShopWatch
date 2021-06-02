@@ -18,71 +18,77 @@
 <!-- END CSS for this page -->
 @endsection
 @section('content')
-<div class="col-12">
-        <div class="card mb-3">
-                               
-            <div class="card-body">
-            <h1 class="text-center">Danh sách đơn hàng chưa xử lí</h1>
-            
-            
-            <form style="float:right;" >
-            <input type="text" placeholder="Search..." name="search" value="{{\Request::get('search')}}" >
-            <button><i class="fas fa-search"></i></button>   
-            </form>
-            <!-- <select style="font-size:15px;" class="form-control" name="loai">
-                <option value="">
-                Loại Xe
-                </option>
-                @if(isset($dbloai))
-                @foreach($dbloai as $l)
-                <option value="{{$l->id}}" {{\Request::get("loai")== $l->id ? "selected='selected'":""}}>{{$l->nameCategory}}</option>
-                @endforeach
-                @endif
-            </select> -->
- 
-               
-             <!--p><a href="{{route('productaddnew')}}" class="btn btn-info">Add new</a></p-->
-             <table class="table table-bordered table-hover">
-                 <thead>
-                     <tr>
-                         <th>STT</th>
-                         <th>Mã đơn hàng</th>
-                         <th>Mã khách hàng</th>
-                         <!-- <th>Chi tiết</th> -->
-                         <th>Tổng tiền</th>
-                         <th>Trạng thái</th> 
-                                       
-                         <td>Xử lí đơn hàng</td>
-                         <td>Xóa</td>
-                     </tr>
-                 </thead>
-                 <tbody>
-                 @php
-                     $TT=1;
-                 @endphp
-                 @isset($order)
-                 @foreach($order as $r)
-                     <tr>
-                         <td>{{$TT++}}</td>
-                         <td>{{$r->order_id}}</td>
-                         <td>{{$r->customer_id}}</td>
-                         <td>{{$r->order_total}} VNĐ</td>
-                         <td>{{$r->order_status}} </td>
-                         </td>
-                         <td>
-                         <a data-id="{{$r->order_id}}" href="{{route('OrderEdit').'/'.$r->order_id}}" class="btn btn-info">Xử lí đơn hàng </a>
-                         </td>
-                         <td>
-                         <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá đơn hàng {{$r->order_id}}')" 
-                         id="" class="btn btn-danger" href="{{route('OrderRemove').'/'.$r->order_id}}" role="button">
-                         Xoá </a>
-                         </td>
-                     </tr>
-                     @endforeach
-                     @endisset
-                 </tbody>
-             </table>
-             <div class="modal fade" id="modal-order">
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-holder">
+                        <h1 class="main-title float-left" _msthash="1387295" _msttexthash="1575912">Đơn hàng chưa xử lí</h1>
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item" _msthash="1710098" _msttexthash="47034">Trang chủ</li>
+                            <li class="breadcrumb-item active" _msthash="1710826" _msttexthash="1575912">Đơn hàng chưa xử lí</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h3>
+                            <i class="fas fa-table"></i><font _mstmutation="1" _msthash="1743274" _msttexthash="1575912"> Đơn hàng chưa xử lí</font></h3>
+                        </div>
+                          <div class="card-body" _msthash="1499953" _msttexthash="2568748">
+                          <h1 class="text-center">Danh sách đơn hàng chưa xử lí</h1>
+                          <form style="float:right;" >
+                          <input type="text" placeholder="Search..." name="search" value="{{\Request::get('search')}}" >
+                          <button><i class="fas fa-search"></i></button>   
+                          </form>         
+                          <table class="table table-bordered table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>STT</th>
+                                      <th>Mã đơn hàng</th>
+                                      <th>Mã khách hàng</th>
+                                      <!-- <th>Chi tiết</th> -->
+                                      <th>Tổng tiền</th>
+                                      <th>Trạng thái</th> 
+                                                    
+                                      <td>Xử lí đơn hàng</td>
+                                      <td>Xóa</td>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              @php
+                                  $TT=1;
+                              @endphp
+                              @isset($order)
+                              @foreach($order as $r)
+                                  <tr>
+                                      <td>{{$TT++}}</td>
+                                      <td>{{$r->order_id}}</td>
+                                      <td>{{$r->customer_id}}</td>
+                                      <td>{{$r->order_total}} VNĐ</td>
+                                      <td>{{$r->order_status}} </td>
+                                      </td>
+                                      <td>
+                                      <a data-id="{{$r->order_id}}" href="{{route('OrderEdit').'/'.$r->order_id}}" class="btn btn-info">Xử lí đơn hàng </a>
+                                      </td>
+                                      <td>
+                                      <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá đơn hàng {{$r->order_id}}')" 
+                                      id="" class="btn btn-danger" href="{{route('OrderRemove').'/'.$r->order_id}}" role="button">
+                                      Xoá </a>
+                                      </td>
+                                  </tr>
+                                  @endforeach
+                                  @endisset
+                              </tbody>
+                          </table>
+                            <div class="modal fade" id="modal-order">
                              <div class="modal-dialog">
                                  <div class="modal-content">
                                      <div class="modal-header">
@@ -126,15 +132,17 @@
                                      </div>
                                  </div>
                              </div>
-                         </div>
-             <nav>
-             
-             </nav>
+                          </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-                             <!-- end card-body-->
+            <!-- end row -->
         </div>
-                         <!-- end card-->
+        <!-- END container-fluid -->
     </div>
+    <!-- END content -->
+</div>
 @endsection
 @section('js')
  <!-- END main -->

@@ -40,7 +40,7 @@ class CartController extends Controller
     public function show_cart(){
     	//$show_slide = DB::table('slider')->get();
     	//$show_category = DB::table('category')->get();
-        return view('Cart'); 
+        return view('Front.Cart'); 
     	//return view('pages.cart.show_cart')->with('show_category',$show_category)
     	//->with('show_slide',$show_slide);
     }
@@ -51,7 +51,7 @@ class CartController extends Controller
             'type' => 'success',
             'message' => 'Xóa sản phẩm khỏi giỏ hàng thành công'
         ]);
-        return Redirect::to('/Cart');
+        return Redirect::to('Front.Cart');
     }
     public function update_cart_qty(Request $request){
         //lấy dữ liệu trong form về thì phải có request
@@ -62,6 +62,6 @@ class CartController extends Controller
             'type' => 'success',
             'message' => 'Cập nhật giỏ hàng thành công'
         ]);
-        return Redirect::to('/Cart');
+        return Redirect::to('Front.Cart');
     }
 }

@@ -196,13 +196,14 @@
                             </div>
 
                             <!-- item-->
-                            <a href="profile.html" class="dropdown-item notify-item">
+                            <a href="/Admin/Profile" class="dropdown-item notify-item">
                                 <i class="fas fa-user"></i>
+                                <img src="" alt="">
                                 <span>Profile</span>
                             </a>
 
                             <!-- item-->
-                            <a href="#" class="dropdown-item notify-item">
+                            <a href="{{URL::to('/Admin/Logout')}}" class="dropdown-item notify-item">
                                 <i class="fas fa-power-off"></i>
                                 <span>Logout</span>
                             </a>
@@ -228,10 +229,10 @@
       @include('Admin.menu')
         <!-- End Sidebar -->
 
-        <div class="content-page">
+        <!-- <div class="content-page"> -->
 
             <!-- Start content -->
-            <div class="content">
+            <!-- <div class="content">
 
                 <div class="container-fluid">
 
@@ -248,22 +249,22 @@
 
                            
                         </div>
-                    </div>
+                    </div> -->
                     <!-- end row -->
 
 
                    
                     @yield('content')
-                    </div>
+                    <!-- </div> -->
                     <!-- end row-->
 
-                </div>
+                <!-- </div> -->
                 <!-- END container-fluid -->
 
-            </div>
+            <!-- </div> -->
             <!-- END content -->
 
-        </div>
+        <!-- </div> -->
         <!-- END content-page -->
 
         <footer class="footer">

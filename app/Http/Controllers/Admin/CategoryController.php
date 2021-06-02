@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Session;
 use App\Models\Admin\CategoryModel;
 class CategoryController extends Controller
 {
     public function getCate(){
+        $profile=DB::table('user')->where('id_user',Session::get('id_user'))->get();
         $order_count=DB::table('order')->count();
         $order_dxl_count=DB::table('order')->where('order_status','Đang chờ xử lí')->count();
         $order_xl_count=DB::table('order')->where('order_status','Đặt hàng thành công')
@@ -18,15 +20,18 @@ class CategoryController extends Controller
         $cate_count=DB::table('category')->count();
         $blog_count=DB::table('blog')->count();
         $allCate=DB::table('category')->get();
+        $user_count=DB::table('user')->count();
+        
         return view('Admin.Category',['product_count'=>$product_count,
         'order_count'=> $order_count,'customer_count'=>$customer_count,
         'cate_count'=>$cate_count,'order_dxl_count'=>$order_dxl_count,
-        'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count])->with('allCate',$allCate);
+        'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count,'profile'=>$profile,'user_count'=>$user_count])->with('allCate',$allCate);
     }
 
     public function edit($id)
     {
         if($id!=null){
+            $profile=DB::table('user')->where('id_user',Session::get('id_user'))->get();
             $db=DB::table('category')->where('id',$id)->get();
             $order_count=DB::table('order')->count();
             $order_dxl_count=DB::table('order')->where('order_status','Đang chờ xử lí')->count();
@@ -36,10 +41,12 @@ class CategoryController extends Controller
             $product_count=DB::table('product')->count();
             $cate_count=DB::table('category')->count();
             $blog_count=DB::table('blog')->count();
+            $user_count=DB::table('user')->count();
+
             return view('Admin.EditCate',['db'=>$db,'product_count'=>$product_count,
             'order_count'=> $order_count,'customer_count'=>$customer_count,
             'cate_count'=>$cate_count,'order_dxl_count'=>$order_dxl_count,
-            'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count]);
+            'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count,'profile'=>$profile,'user_count'=>$user_count]);
         }
 
         return redirect()->route('Cateindex');//lat phai tao route co ten la alophocindex

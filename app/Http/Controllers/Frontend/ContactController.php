@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function Blog(){
         $bl=DB::table('blog')->orderby('id','asc')->get();
         $cbl=DB::table('cateblog')->orderby('idcate','desc')->get();
-        return view('Blog')->with('bl',$bl)->with('cbl',$cbl);
+        return view('Front.Blog')->with('bl',$bl)->with('cbl',$cbl);
     }
     public function DetailBlog($id){
         //if($id!=null){
@@ -26,7 +26,7 @@ class ContactController extends Controller
         $cbl=DB::table('cateblog')->orderby('idcate','desc')->get();
         $Get_CMT=DB::table('comment_blog')->join('customer','comment_blog.id_customer','=','customer.customer_id')
         ->where('id_blog',$id)->get();
-        return view('DetailBlog')->with('debl',$debl)->with('bl',$bl)->with('cbl',$cbl)->with('Get_CMT',$Get_CMT);;
+        return view('Front.DetailBlog')->with('debl',$debl)->with('bl',$bl)->with('cbl',$cbl)->with('Get_CMT',$Get_CMT);;
         //return view('DetailBlog');
         //} 
          
@@ -35,7 +35,7 @@ class ContactController extends Controller
         $gt=DB::table('gioithieu')->get();
         $bl=DB::table('blog')->orderby('id','asc')->get();
         $cbl=DB::table('cateblog')->orderby('idcate','desc')->get();
-        return view('GioiThieu')->with('gt',$gt)->with('cbl',$cbl)->with('bl',$bl);
+        return view('Front.GioiThieu')->with('gt',$gt)->with('cbl',$cbl)->with('bl',$bl);
     }
     public function Comment_blog(Request $req ,$id){
         $data=array();

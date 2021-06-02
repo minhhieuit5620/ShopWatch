@@ -35,7 +35,7 @@ class ProductDetailController extends Controller
            // $db3=ProductInfoModel::find($db->$id);
            // $db4=ProductModel::where('ProductID','=',$db->ProductID)->get();
             //$db4=ProductInfoModel::where('ProductID',$id)->get();
-            return view('DetailProduct',['db'=>$db,'db1'=>$db1,'db2'=>$db2,'db3'=>$db3,'get_cmt'=>$get_cmt]);
+            return view('Front.DetailProduct',['db'=>$db,'db1'=>$db1,'db2'=>$db2,'db3'=>$db3,'get_cmt'=>$get_cmt]);
         }
     }
     public function Comment(request $req,$id){

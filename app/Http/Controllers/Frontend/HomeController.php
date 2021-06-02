@@ -27,7 +27,7 @@ class HomeController extends Controller
         $menu=DB::table('menu')->orderby('id','asc')->get();
         $tt=DB::table('blog')->orderby('id','asc')->get();
         $trademark=DB::table('trademark')->orderby('id','asc')->take(10)->get();
-        return view('Home',['db'=>$db,'ct'=>$ct])->with('lsp',$lsp)->with('th',$th)->with('menu',$menu)->with('tt',$tt)->with('trademark',$trademark);
+        return view('Front.Home',['db'=>$db,'ct'=>$ct])->with('lsp',$lsp)->with('th',$th)->with('menu',$menu)->with('tt',$tt)->with('trademark',$trademark);
         //return view('Home',['db'=>$db,'ct'=>$ct]);
     }
     /*public function getCategory(){
@@ -56,12 +56,16 @@ class HomeController extends Controller
         $menu=DB::table('menu')->orderby('id','asc')->get();
         $tt=DB::table('blog')->orderby('id','asc')->get();
         
-        return view('Shop',$data)->with('ct',$ct)
+        return view('Front.Shop',$data)->with('ct',$ct)
         ->with('th',$th)->with('menu',$menu)->with('tt',$tt)->with('lsp',$lsp);
     }
     public function ProductCate($id=null){
         $prc=DB::table('product')->where('idcategory',$id)->get();
-        return view('ProductCate',)->with('prc',$prc);
+        $lsp=DB::table('category')->orderby('id','asc')->get();//->take(4)
+        $th=DB::table('trademark')->orderby('id','asc')->take(4)->get();
+        $menu=DB::table('menu')->orderby('id','asc')->get();
+        $tt=DB::table('blog')->orderby('id','asc')->get();
+        return view('Front.ProductCate',)->with('prc',$prc)->with('lsp',$lsp)->with('th',$th)->with('menu',$menu)->with('tt',$tt);
     }
     
     public function Search(Request $req){
@@ -72,13 +76,13 @@ class HomeController extends Controller
             return Redirect::to('/');
         }else{
            
-            return view('Search')->with('search_pro',$search_pro);
+            return view('Front.Search')->with('search_pro',$search_pro);
         }
         
     }
     public function phukien(){
         $phukien=DB::table('product')->where('idcategory','=','5')->get();
-        return view('PhuKien')->with('phukien',$phukien);
+        return view('Front.PhuKien')->with('phukien',$phukien);
     }
     
     public function footer(){

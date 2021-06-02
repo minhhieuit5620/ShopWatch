@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\BlogModel;
 use DB;
+use Session;
 class BlogController extends Controller
 {
     public function getBlog(){
-       
+        $profile=DB::table('user')->where('id_user',Session::get('id_user'))->get();
         $order_count=DB::table('order')->count();
         $order_dxl_count=DB::table('order')->where('order_status','Đang chờ xử lí')->count();
         $order_xl_count=DB::table('order')->where('order_status','Đặt hàng thành công')
@@ -18,18 +19,20 @@ class BlogController extends Controller
         $product_count=DB::table('product')->count();
         $cate_count=DB::table('category')->count();
         $blog_count=DB::table('blog')->count();
+        $user_count=DB::table('user')->count();
 
         $get_all_blog=DB::table('blog')->get();
 
         return view('Admin.Blog',['product_count'=>$product_count,
         'order_count'=> $order_count,'customer_count'=>$customer_count,
         'cate_count'=>$cate_count,'order_dxl_count'=>$order_dxl_count,
-        'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count])->with('get_all_blog',$get_all_blog);
+        'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count,
+        'profile'=>$profile,'user_count'=>$user_count])->with('get_all_blog',$get_all_blog);
     }
     public function edit($id)
     {
         if($id!=null){
-           
+            $profile=DB::table('user')->where('id_user',Session::get('id_user'))->get();
             $order_count=DB::table('order')->count();
             $order_dxl_count=DB::table('order')->where('order_status','Đang chờ xử lí')->count();
             $order_xl_count=DB::table('order')->where('order_status','Đặt hàng thành công')
@@ -38,13 +41,14 @@ class BlogController extends Controller
             $product_count=DB::table('product')->count();
             $cate_count=DB::table('category')->count();
             $blog_count=DB::table('blog')->count();
-
+            $user_count=DB::table('user')->count();
+            
             $db=DB::table('blog')->where('id',$id)->get();
 
             return view('Admin.EditBlog',['db'=>$db,'product_count'=>$product_count,
             'order_count'=> $order_count,'customer_count'=>$customer_count,
             'cate_count'=>$cate_count,'order_dxl_count'=>$order_dxl_count,
-            'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count]);
+            'order_xl_count'=>$order_xl_count,'blog_count'=>$blog_count,'profile'=>$profile,'user_count'=>$user_count]);
         }
 
         return redirect()->route('Blogindex');//lat phai tao route co ten la alophocindex

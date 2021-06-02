@@ -68,9 +68,10 @@ Route::post('/login-customer','App\Http\Controllers\Frontend\CheckoutController@
 /*----------------------------------End Front-End--------------------------------------------------*/
 
 
-/*----------------------------------Back-End--------------------------------------------------*/
+/*----------------------------------Start Back-End--------------------------------------------------*/
 // back-end
 //Route::get('/Admin','App\Http\Controllers\Admin\HomeController@thongke')->name('layout');
+
 Route::get('/Admin','App\Http\Controllers\Admin\HomeController@index')->name('productindex');
 Route::get('/Admin/Edit-Product/{id?}','App\Http\Controllers\Admin\HomeController@edit')->name('productedit');
 Route::post('/Admin/Put-Product/{id?}','App\Http\Controllers\Admin\HomeController@put')->name('productput');
@@ -78,6 +79,14 @@ Route::get('/Admin/Remove-Product/{id?}','App\Http\Controllers\Admin\HomeControl
 Route::get('/Admin/create','App\Http\Controllers\Admin\HomeController@addnew')->name('productaddnew');
 Route::post('/Admin/Save-Product','App\Http\Controllers\Admin\HomeController@save')->name('productsave');
 
+//Login
+Route::get('/Admin/Login','App\Http\Controllers\Admin\HomeController@Login');
+Route::post('/Admin/Login-user','App\Http\Controllers\Admin\HomeController@Login_user');
+Route::get('/Admin/Logout','App\Http\Controllers\Admin\HomeController@Logout_user');
+//Profile
+Route::get('/Admin/Profile','App\Http\Controllers\Admin\UserController@Profile');
+Route::post('/Admin/Put-Profile/{id?}','App\Http\Controllers\Admin\UserController@Put_Profile');
+Route::post('/Admin/PostAvt//{id?}','App\Http\Controllers\Admin\UserController@PostAvt');
 //Blog
 Route::get('/Admin/Blog','App\Http\Controllers\Admin\BlogController@getBlog')->name('Blogindex');
 Route::post('/Admin/Save-Blog','App\Http\Controllers\Admin\BlogController@save')->name('Blogsave');
@@ -98,4 +107,6 @@ Route::post('/Admin/Put-Order/{id?}','App\Http\Controllers\Admin\OrderController
 Route::get('/Admin/Remove-Order/{id?}','App\Http\Controllers\Admin\OrderController@remove')->name('OrderRemove');
 Route::get('/Admin/Remove-OrderSuccess/{id?}','App\Http\Controllers\Admin\OrderController@removeSuc')->name('OrderSucRemove');
 
+//Customer
+Route::get('/Admin/Customer','App\Http\Controllers\Admin\CustomerController@getCus');
 /*----------------------------------End Back-End--------------------------------------------------*/
