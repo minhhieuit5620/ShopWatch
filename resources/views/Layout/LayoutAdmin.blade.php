@@ -21,8 +21,9 @@
 
             <!-- LOGO -->
             <div class="headerbar-left">
-                <a href="index.html" class="logo">
+                <a href="/Admin" class="logo">
                     <!-- <img alt="Logo" src="../assets/images/logo.png" /> -->
+                    <img src="/assets/images/logo.png" />
                     <span>Quản trị hệ thống</span>
                 </a>
             </div>
@@ -185,7 +186,7 @@
 
                     <li class="list-inline-item dropdown notif">
                         <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
-                            <img src="../assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                            <img src="/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->

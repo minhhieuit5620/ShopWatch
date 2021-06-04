@@ -32,6 +32,18 @@
                                 <h3><i class="far fa-user"></i>Thông tin của bạn</h3>
                             </div>
                             <div class="card-body">
+                            <!-- hiển thị thông báo -->
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <!-- end thông báo -->
+                                <br>
                                 @foreach($profile as $r)
                                 <form action="{{URL::to('/Admin/Put-Profile/'.$r->id_user)}}" method="post" enctype="multipart/form-data">
                                 @csrf

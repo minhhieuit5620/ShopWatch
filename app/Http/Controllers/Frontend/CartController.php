@@ -51,7 +51,7 @@ class CartController extends Controller
             'type' => 'success',
             'message' => 'Xóa sản phẩm khỏi giỏ hàng thành công'
         ]);
-        return Redirect::to('Front.Cart');
+        return Redirect::to('Front/Cart');
     }
     public function update_cart_qty(Request $request){
         //lấy dữ liệu trong form về thì phải có request
@@ -62,6 +62,6 @@ class CartController extends Controller
             'type' => 'success',
             'message' => 'Cập nhật giỏ hàng thành công'
         ]);
-        return Redirect::to('Front.Cart');
+        return Redirect::to('Front/Cart');
     }
 }

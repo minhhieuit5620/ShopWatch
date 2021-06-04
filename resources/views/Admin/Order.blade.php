@@ -72,7 +72,11 @@
                                       <td>{{$TT++}}</td>
                                       <td>{{$r->order_id}}</td>
                                       <td>{{$r->customer_id}}</td>
-                                      <td>{{$r->order_total}} VNĐ</td>
+                                      <td>
+                                      <?php                                                                       
+                                        echo str_replace(".00"," ", $r->order_total)."VNĐ" ;                                                                       
+                                        ?>
+                                      </td>
                                       <td>{{$r->order_status}} </td>
                                       </td>
                                       <td>

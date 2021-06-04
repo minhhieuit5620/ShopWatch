@@ -44,67 +44,62 @@
                         </div>
                         <div class="card-body" _msthash="1499953" _msttexthash="2568748">
                         <h1 class="text-center">Danh sách khách hàng</h1>                        
-                        <a class="btn btn-primary"  style=" margin-bottom:20px;"data-toggle="modal" href='#modal-id'> <i class="fas fa-plus"></i> Thêm mới</a>
+                        
                         <form style="float:right;" >
                         <input type="text" placeholder="Search..." name="search" value="{{\Request::get('search')}}" >
                         <button><i class="fas fa-search"></i></button>   
-                        </form>           
-                        <div class="modal fade" id="modal-id">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <form action="{{route('CateSave')}}" method="post">
-                                        @csrf
-                                    <div class="modal-header">
-                                    <h4 class="modal-title"> Thêm loại sản phẩm mới</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                                              
-                                    </div>
-                                    <div class="modal-body">                                        
-                                        <table class="table table-bordered table-hover">                
+                        </form>   
+                                     
+                        <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="min-width:750px">Thông tin khách hàng</th>
+                                                    <!-- <th style="width:120px">Reset pass</th> -->
+                                                    <th style="min-width:110px; text-align:center">Thao tác</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach($getCus as $r)
                                             <tbody>
                                                 <tr>
-                                                    <td>ID</td>
-                                                    <td><input type="text" name="txtid"></td>
+                                                    <td>
+                                                        <div class="user_avatar_list d-none d-none d-lg-block" style="margin-bottom: 15px;"><img alt="image" src="../assets/images/avatars/avatar_small.png"></div>
+                                                        <h4> {{$r->customer_name}}</h4>
+                                                        <p>Địa chỉ Email : {{$r->customer_email}}</p>
+                                                        <p>Số điện thoại : {{$r->customer_phone}} </p>
+                                                        
+                                                    </td>
+                                                  
+                                                    <td>
+                                                        <a href="{{route('detailCus').'/'.$r->customer_id}}" class="btn btn-primary  mt-4 ml-4 ">
+                                                        <i class="fas fa-search"></i> Xem</a>
+                                                        <a href="{{route('resetPass').'/'.$r->customer_id}}" class="btn btn-primary  mt-4 ">
+                                                        <i class="far fa-edit"></i> Reset mật khẩu</a>
+                                                        <!-- <a href="#" class="btn btn-primary btn-sm btn-block"><i class="far fa-edit"></i> Edit</a> -->
+                                                        <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá khách hàng {{$r->customer_id}}')" 
+                                                        id="" class="btn btn-danger mt-4 " href="{{route('removeCus').'/'.$r->customer_id}}" role="button">
+                                                        <i class="fas fa-trash"></i> Xoá </a>
+                                                        <!-- <a href="#" class="btn btn-danger btn-sm btn-block mt-2"><i class="fas fa-trash"></i> Delete</a> -->
+                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Tên loại sản phẩm</td>
-                                                    <td><input type="text" name="txtname"></td>
-                                                </tr>                                                                      
-                                                <tr>
-                                                    <td>Hình ảnh</td>
-                                                    <td><input type="file" name="txtimg"> </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>trang thai</td>
-                                                    <td><input type="checkbox" name="cbtt"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ghi chú</td>
-                                                    <td><input type="text" name="txtnote"></td>
-                                                </tr>
-                                            
+
+                                               
                                             </tbody>
-                                        </table>                                                        
+                                            @endforeach
+                                        </table>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
-                                        <button type="submit" name="cmd" class="btn btn-primary">Lưu</button>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>                
                         <!--p><a href="{{route('productaddnew')}}" class="btn btn-info">Add new</a></p-->
-                        <table class="table table-bordered table-hover">
+                        <!-- <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>STT</th>
                                     <th>Mã khách hàng</th>
                                     
-                                    <!-- <th>Chi tiết</th> -->
+                                  
                                     <th>Tên khách hàng</th>
                                     <th>Email</th> 
                                     <th>Điện thoại</th>     
-                                    <td>Sửa</td>
+                                    <td>Xem</td>
                                     <td>Xóa</td>
                                 </tr>
                             </thead>
@@ -122,18 +117,18 @@
                                     <td>{{$r->customer_email}} </td>
                                     <td>{{$r->customer_phone}} </td>
                                     <td>
-                                    <a data-id="" href="{{route('EditCate').'/'.$r->customer_id}}" class="btn btn-info">Sửa </a>
+                                    <a data-id="" href="{{route('EditCate').'/'.$r->customer_id}}" class="btn btn-info">Xem </a>
                                     </td>
                                     <td>
-                                    <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá loại sản phẩm {{$r->customer_id}}')" 
-                                    id="" class="btn btn-danger" href="{{route('CateRemove').'/'.$r->customer_id}}" role="button">
+                                    <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá khách hàng {{$r->customer_id}}')" 
+                                    id="" class="btn btn-danger" href="{{route('removeCus').'/'.$r->customer_id}}" role="button">
                                     Xoá </a>
                                     </td>
                                 </tr>
                                 @endforeach
                            
                             </tbody>
-                        </table>
+                        </table> -->
                         </div>
                     </div>
                 </div>

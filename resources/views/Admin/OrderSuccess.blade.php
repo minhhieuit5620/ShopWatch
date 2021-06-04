@@ -71,11 +71,15 @@
                                         <td>{{$TT++}}</td>
                                         <td>{{$r->order_id}}</td>
                                         <td>{{$r->customer_id}}</td>
-                                        <td>{{$r->order_total}} VNĐ</td>
+                                        <td>
+                                        <?php                                                                       
+                                        echo str_replace(".00"," ", $r->order_total)."VNĐ" ;                                                                       
+                                        ?>
+                                        </td>
                                         <td>{{$r->order_status}} </td>
                                         
                                         <td>
-                                        <a data-id="{{$r->order_id}}" href="{{route('OrderEdit').'/'.$r->order_id}}" class="btn btn-info">Xem </a>
+                                        <a data-id="{{$r->order_id}}" href="{{URL::to('/Admin/DetailOrder/'.$r->order_id)}}" class="btn btn-info">Xem </a>
                                         </td>
                                         <td>
                                         <a name="" onclick="return confirm('Bạn chắc chắn muốn xoá đơn hàng {{$r->order_id}}')" 

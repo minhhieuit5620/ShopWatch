@@ -107,6 +107,11 @@ Route::post('/Admin/Put-Order/{id?}','App\Http\Controllers\Admin\OrderController
 Route::get('/Admin/Remove-Order/{id?}','App\Http\Controllers\Admin\OrderController@remove')->name('OrderRemove');
 Route::get('/Admin/Remove-OrderSuccess/{id?}','App\Http\Controllers\Admin\OrderController@removeSuc')->name('OrderSucRemove');
 
+
+Route::get('/Admin/DetailOrder/{id?}','App\Http\Controllers\Admin\OrderController@DetailOrder')->name('DetailOrder');
 //Customer
-Route::get('/Admin/Customer','App\Http\Controllers\Admin\CustomerController@getCus');
+Route::get('/Admin/Customer','App\Http\Controllers\Admin\CustomerController@getCus')->name('getCus');
+Route::get('/Admin/viewCus/{id?}','App\Http\Controllers\Admin\CustomerController@detailCus')->name('detailCus');
+Route::get('/Admin/remove-Cus/{id?}','App\Http\Controllers\Admin\CustomerController@removeCus')->name('removeCus');
+Route::get('/Admin/resetPass/{id?}','App\Http\Controllers\Admin\CustomerController@resetPass')->name('resetPass');
 /*----------------------------------End Back-End--------------------------------------------------*/

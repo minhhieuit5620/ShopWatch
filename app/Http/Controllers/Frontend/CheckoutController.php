@@ -33,7 +33,7 @@ class CheckoutController extends Controller
 
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$req->customer_name);
-        return Redirect('Front.Checkout'); 
+        return Redirect('Front/Checkout'); 
     }
     public function checkout(){
         $customer_id=Session::get('customer_id');
@@ -126,15 +126,7 @@ class CheckoutController extends Controller
                 'password'=> 'required|min:3|max:32',
                 'passwordAgain'=> 'required|same:password'
             ],[
-                'password.required'=> 'Bạn chưa nhập mật khẩu',
-                //  Session::flash('toastr',[
-                //     'type' => 'error',
-                //     'message' => 'Bạn chưa nhập mật khẩu'
-                // ])             
-                // 'password.min'=>  Session::flash('toastr',[
-                //     'type' => 'error',
-                //     'message' => 'Mật khẩu của bạn phải chứa ít nhất 3 kí tự'
-                // ]),
+                'password.required'=> 'Bạn chưa nhập mật khẩu',               
                 'password.min'=>'Mật khẩu của bạn phải chứa ít nhất 3 kí tự',
                 'password.max'=>'Mật khẩu của bạn chỉ chứa tối đa 32 kí tự',
                 'passwordAgain.required'=>'Bạn chưa nhập lại mật khẩu',
@@ -152,7 +144,7 @@ class CheckoutController extends Controller
     }
     public function Logout_checkout(){
         Session::flush();
-        return Redirect('Front.login-checkout');
+        return Redirect('/login-checkout');
     }
     public function Login_customer(Request $req){
         
@@ -165,17 +157,15 @@ class CheckoutController extends Controller
                 'type' => 'success',
                 'message' => 'Đăng nhập thành công'
             ]);    
-            return Redirect::to('Front.Checkout'); 
+            return Redirect::to('Checkout'); 
         }else{
           
             Session::flash('toastr',[
                 'type' => 'error',
                 'message' => 'Thông tin đăng nhập sai , vui lòng kiểm tra và đăng nhập lại'
             ]);    
-            return Redirect::to('Front.login-checkout');
-        }
-       
-
+            return Redirect::to('login-checkout');
+        }       
     }
     public function payment(){
 
