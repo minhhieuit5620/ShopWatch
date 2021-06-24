@@ -24,7 +24,8 @@ class ProductDetailController extends Controller
             $db3=DB::table('product_info')->where('ProductID',$id)->get();
            // if($prID==$id)
             //$db3=ProductInfoModel::where('ProductID',$prID)->get();
-            $get_cmt=DB::table('comment_product')->join('customer','comment_product.id_customer','=','customer.customer_id')->where('id_product',$id)->get();
+            $get_cmt=DB::table('comment_product')->join('customer','comment_product.id_customer','=','customer.customer_id')
+            ->where('id_product',$id)->get();
             // Carbon::setLocale('vi'); // hiển thị ngôn ngữ tiếng việt.
             // $dt = Carbon::create(2018, 10, 18, 14, 40, 16);
             // $dt2 = Carbon::create(2018, 10, 18, 13, 40, 16);

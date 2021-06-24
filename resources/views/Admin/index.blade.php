@@ -41,7 +41,7 @@
                 <i class="far fa-user float-right text-white"></i>
                 <h6 class="text-white text-uppercase m-b-20">Khách hàng</h6>
                 <h1 class="m-b-20 text-white counter">{{$customer_count}}</h1> 
-                <a href=""><span class="text-white">Chi tiết</span></a>               
+                <a href="/Admin/Customer"><span class="text-white">Chi tiết</span></a>               
             </div>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
@@ -50,7 +50,7 @@
                
                 <h6 class="text-white text-uppercase m-b-20">Sản phẩm</h6>
                 <h1 class="m-b-20 text-white counter">{{$product_count}}</h1>
-                <a href=""><span class="text-white">Chi tiết</span></a>
+                <a href="/"><span class="text-white">Chi tiết</span></a>
             </div>
         </div>
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
@@ -66,7 +66,7 @@
                 <i class="fas fa-newspaper float-right text-white"></i>               
                 <h6 class="text-white text-uppercase m-b-20">Tin tức</h6>
                 <h1 class="m-b-20 text-white counter">{{$blog_count}}</h1>
-                <a href=""><span class="text-white">Chi tiết</span></a>
+                <a href="/Admin/Blog"><span class="text-white">Chi tiết</span></a>
             </div>
         </div>
     </div>

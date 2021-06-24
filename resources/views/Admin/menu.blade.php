@@ -45,6 +45,30 @@
                 </a>
             </li>
             <li class="submenu">
+                <a id="">
+               
+                    <i class="fas fa-user"></i>       
+                    <span> Người dùng </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="list-unstyled">
+                    <li>
+                    <a href="/Admin/Customer">
+                        <span class="label radius-circle bg-danger float-right">{{$customer_count}}</span>                    
+                        <i class="fas fa-users"></i>
+                        <span>Khách hàng</span>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="/Admin/User">
+                        <span class="label radius-circle bg-danger float-right">{{$user_count}}</span>
+                        <i class="fas fa-user"></i>                 
+                        <span>Người dùng</span>
+                    </a>
+                    </li>
+                </ul>
+            </li>           
+            <!-- <li class="submenu">
                 <a href="/Admin/Customer">
                 <span class="label radius-circle bg-danger float-right">{{$customer_count}}</span>                    
                     <i class="fas fa-users"></i>
@@ -52,12 +76,12 @@
                 </a>
             </li>
             <li class="submenu">
-                <a href="users.html">
-                <span class="label radius-circle bg-danger float-right">{{$user_count}}</span>
+                <a href="/Admin/User">
+                    <span class="label radius-circle bg-danger float-right">{{$user_count}}</span>
                     <i class="fas fa-user"></i>                 
                     <span>Người dùng</span>
                 </a>
-            </li>
+            </li> -->
 
         </ul>
 

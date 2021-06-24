@@ -149,7 +149,7 @@ class HomeController extends Controller
         // $password=md5($req->password_account);
         // $result=DB::table('customer')->where('customer_email',$email)->where('customer_password',$password)->first();
         $email=$req->user;
-        $pass=$req->pass;
+        $pass=md5($req->pass);
         $result=DB::table('user')->where('user_email',$email)->where('password',$pass)->first();
         
         if($result){

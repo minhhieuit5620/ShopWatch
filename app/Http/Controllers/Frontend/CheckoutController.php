@@ -33,7 +33,7 @@ class CheckoutController extends Controller
 
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$req->customer_name);
-        return Redirect('Front/Checkout'); 
+        return Redirect('Checkout'); 
     }
     public function checkout(){
         $customer_id=Session::get('customer_id');
@@ -111,6 +111,12 @@ class CheckoutController extends Controller
        ->join('product','order_detail.product_id','=','product.id')
        ->where('order_detail.order_id',$id)->get();
        return view('Front.Order_view_detail')->with('order_detail',$order_detail)->with('thong_tin',$thong_tin); 
+    }
+    public function Cus_Cancel_Order($id){
+        $Cancel_order=array();
+        $Cancel_order['order_status']="Hủy đơn hàng";
+        DB::table('order')->where('order_id',$id)->update($Cancel_order);
+        return redirect("Order-view");
     }
     // người dùng cập nhật tài khoản
     public function EditCustomer(request $req,$id){

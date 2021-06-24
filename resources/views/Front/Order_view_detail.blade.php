@@ -117,11 +117,12 @@
                 <h3 class="text-center">Chi tiết đơn hàng {{$r->order_id}} - {{$r->order_status}}</h3>
                 @endforeach
                 <br>
+                <!-- <form action="{{URL::to('Frontend/Cus-Cancel-Order/'.$r->order_id)}}" method="post"> -->
                 <div class="table-responsive">                
                     <table class="table  table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Mã đơn hàng</th>                             
+                                                           
                                 <th>Tên sản phẩm</th>
                                 <th>Hình ảnh</th>
                                 <th>Giá</th>
@@ -136,7 +137,7 @@
                         ?>
                             @foreach($order_detail as $r)
                             <tr>
-                                <td> {{$r->order_detail_id}}</a></td> 
+                                
                                 <td> {{$r->product_name}}</td>                           
                                 <td><img style="width:50px;" src="/img/dongho/{{$r->image}}" alt=""></td>                               
                                 
@@ -147,11 +148,30 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
                     </table>
-                    <a href="/">
-                    <input type="button" class="btn btn-info" value="Quay lại cửa hàng"></a>
                    
-                </div>
+                    <a href="/"><input type="button" class="btn btn-info" value="Quay lại cửa hàng"></a>
+
+                  
+                    <?php
+                    
+                    if($r->order_status=="Đang chờ xử lí"){ ?>
+                   <form onclick="return confirm('Bạn chắc chắn muốn hủy đơn hàng {{$r->order_id}}')" action="{{URL::to('Cus-Cancel-Order/'.$r->order_id)}}" method="post">
+                   {{csrf_field()}}
+                    <input type="submit" class="btn btn-danger" style="float:right;margin-top: -38px;"value="Hủy đơn hàng"></form>                   
+                    <?php
+                    }else{
+                    ?>                    
+                    <?php 
+                    }
+                    ?>
+                     <!-- <a href="{{URL::to('Cus-Cancel-Order/'.$r->order_id)}}" style="float:right;">
+                     <input type="button" class="btn btn-danger"value="Hủy đơn hàng"></a> -->
+                    
+                    
+                    
+               
                 </div>
             </div>
         </div>

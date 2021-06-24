@@ -56,7 +56,7 @@
                           <input type="text" placeholder="Search..." name="search" value="{{\Request::get('search')}}" >
                           <button><i class="fas fa-search"></i></button>   
                           </form>          -->
-                          <table class="table table-bordered table-hover">
+                          <table class="table table-bordered table-hover" >
                               <thead>
                                   <tr>
                                       <th>STT</th>
@@ -75,8 +75,8 @@
                               @php
                                   $TT=1;
                               @endphp
-                              @isset($order)
-                              @foreach($order as $r)
+                              @isset($Get_Between_date)
+                              @foreach($Get_Between_date as $r)
                                   <tr>
                                 
                                       <td>{{$TT++}}</td>
@@ -128,50 +128,8 @@
                                   @endisset
                               </tbody>
                           </table>
-                            <div class="modal fade" id="modal-order">
-                             <div class="modal-dialog">
-                                 <div class="modal-content">
-                                     <div class="modal-header">
-                                     <h4 class="modal-title">Chi tiết đơn hàng</h4>
-                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                         
-                                     </div>
-                                     <div class="modal-body">
-                                         <div class="form-group">
-                                           <label for="">Mã đơn hàng</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->order_id}}" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Tên khách hàng</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->customer_name}}" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Điện thoại</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->customer_phone}}" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Tên sản phẩm</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->product_name}}" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Số lượng</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->product_quantity}}" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Giá tiền</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{number_format($r->price,0)}} VNĐ" aria-describedby="helpId">                                           
-                                         </div>
-                                         <div class="form-group">
-                                           <label for="">Tổng tiền</label>
-                                           <input type="text" name="" id="" class="form-control" placeholder="" value="{{$r->order_total}} VNĐ" aria-describedby="helpId">                                           
-                                         </div>                                         
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                         <button type="button" class="btn btn-primary">Save changes</button>
-                                     </div>
-                                 </div>
-                             </div>
+                          
+                            
                           </div>
                         </div>
                     </div>

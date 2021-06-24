@@ -55,7 +55,7 @@ class HomeController extends Controller
         $lsp=DB::table('category')->orderby('id','asc')->get();//->take(4)       
         $menu=DB::table('menu')->orderby('id','asc')->get();
         $tt=DB::table('blog')->orderby('id','asc')->get();
-        
+       
         return view('Front.Shop',$data)->with('ct',$ct)
         ->with('th',$th)->with('menu',$menu)->with('tt',$tt)->with('lsp',$lsp);
     }

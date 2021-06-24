@@ -60,6 +60,8 @@
 
                                                 <div class="invoice-title text-center mb-3">
                                                     <h2>Đơn hàng #{{$r->order_id}} </h2>
+                                                    <p><strong>Trạng thái</strong>  : {{$r->order_status}}</p>
+                                                  
                                                     <strong>Ngày đặt hàng:</strong> 
                                                     <?php
                                                         echo  date("d/m/Y", strtotime($r->order_date));
@@ -80,6 +82,7 @@
                                                         <address>
                                                             {{$r->shipping_address}}
                                                         </address>
+                                                        
                                                     </div>
                                                 </div>
 

@@ -56,6 +56,7 @@ Route::get('/Sign-up','App\Http\Controllers\Frontend\CheckoutController@Sign_up'
 Route::post('/add-customer','App\Http\Controllers\Frontend\CheckoutController@add_customer');
 Route::get('/Checkout','App\Http\Controllers\Frontend\CheckoutController@checkout');
 Route::get('/Order-view','App\Http\Controllers\Frontend\CheckoutController@Order_view');
+Route::post('/Cus-Cancel-Order/{id?}','App\Http\Controllers\Frontend\CheckoutController@Cus_Cancel_Order');
 Route::get('/Customer','App\Http\Controllers\Frontend\CheckoutController@Customer');
 
 //Customer
@@ -83,7 +84,12 @@ Route::post('/Admin/Save-Product','App\Http\Controllers\Admin\HomeController@sav
 Route::get('/Admin/Login','App\Http\Controllers\Admin\HomeController@Login');
 Route::post('/Admin/Login-user','App\Http\Controllers\Admin\HomeController@Login_user');
 Route::get('/Admin/Logout','App\Http\Controllers\Admin\HomeController@Logout_user');
-//Profile
+//User-Profile
+Route::get('/Admin/User','App\Http\Controllers\Admin\UserController@get_All_User');
+Route::post('/Admin/add-user','App\Http\Controllers\Admin\UserController@Add_User');
+Route::get('/Admin/Edit-User/{id?}','App\Http\Controllers\Admin\UserController@Edit_User');
+Route::post('/Admin/Put-User/{id?}','App\Http\Controllers\Admin\UserController@Put_Profile');
+Route::get('/Admin/Delete-User/{id?}','App\Http\Controllers\Admin\UserController@Delete_User');
 Route::get('/Admin/Profile','App\Http\Controllers\Admin\UserController@Profile');
 Route::post('/Admin/Put-Profile/{id?}','App\Http\Controllers\Admin\UserController@Put_Profile');
 Route::post('/Admin/PostAvt//{id?}','App\Http\Controllers\Admin\UserController@PostAvt');
@@ -106,8 +112,8 @@ Route::get('/Admin/Edit-Order/{id?}','App\Http\Controllers\Admin\OrderController
 Route::post('/Admin/Put-Order/{id?}','App\Http\Controllers\Admin\OrderController@put')->name('OrderPut');
 Route::get('/Admin/Remove-Order/{id?}','App\Http\Controllers\Admin\OrderController@remove')->name('OrderRemove');
 Route::get('/Admin/Remove-OrderSuccess/{id?}','App\Http\Controllers\Admin\OrderController@removeSuc')->name('OrderSucRemove');
-
-
+Route::post('/Admin/sua/{id?}','App\Http\Controllers\Admin\OrderController@sua');
+Route::get('/Admin/Between-date/','App\Http\Controllers\Admin\OrderController@Get_Between_date');
 Route::get('/Admin/DetailOrder/{id?}','App\Http\Controllers\Admin\OrderController@DetailOrder')->name('DetailOrder');
 //Customer
 Route::get('/Admin/Customer','App\Http\Controllers\Admin\CustomerController@getCus')->name('getCus');

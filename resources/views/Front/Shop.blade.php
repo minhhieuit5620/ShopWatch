@@ -49,11 +49,12 @@
                                 <ul class="list">
                                     <li>
                                         <a href="{{URL::to('/ProductCate/'.$cate->id)}}">{{$cate->nameCategory}}</a>
-                                        <span>(250)</span>
+                                        <span></span>
                                     </li>
                                    
                                 </ul>
                                 @endforeach
+                              
                             </div>
                         </aside>
 
